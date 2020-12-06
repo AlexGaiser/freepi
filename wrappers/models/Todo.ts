@@ -1,5 +1,8 @@
-export interface Todo {
-  name:string | unknown
-}
+import { AxiosResponse } from "axios";
 
-const todo:Todo = {name: undefined}
+export interface Todo {
+   userId: number,
+   id: number,
+   title: string,
+   completed: boolean,
+}

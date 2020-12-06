@@ -1,5 +1,6 @@
 import commonjs from 'rollup-plugin-commonjs';
 import resolve from 'rollup-plugin-node-resolve';
+import typescript2 from 'rollup-plugin-typescript2'
 
 export default {
   input: 'index.js',
@@ -11,7 +12,7 @@ export default {
     {
       file: 'dist/umd.js',
       format: 'umd',
-      name: 'index',
+      name: 'umd',
       globals: {
         'axios':'axios'
       }
@@ -19,7 +20,7 @@ export default {
     {
       file: 'dist/iife.js',
       format: 'iife',
-      name: 'index',
+      name: 'iife',
       globals: {
         'axios':'axios'
       }
@@ -27,7 +28,7 @@ export default {
   ],
   plugins: [
     resolve(),
-    commonjs()
+    commonjs(),
   ],
   external: [
     'lodash/random',
