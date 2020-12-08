@@ -1,70 +1,50 @@
 'use strict';
 
-function _interopDefault (ex) { return (ex && (typeof ex === 'object') && 'default' in ex) ? ex['default'] : ex; }
+var Axios = require('axios');
 
-var axios = _interopDefault(require('axios'));
+function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
 
-function unwrapExports (x) {
-	return x && x.__esModule && Object.prototype.hasOwnProperty.call(x, 'default') ? x['default'] : x;
-}
+var Axios__default = /*#__PURE__*/_interopDefaultLegacy(Axios);
 
-function createCommonjsModule(fn, module) {
-	return module = { exports: {} }, fn(module, module.exports), module.exports;
-}
-
-var jsonWrapper = createCommonjsModule(function (module, exports) {
-exports.__esModule = true;
-
-var JSONWrapper = /** @class */ (function () {
-    function JSONWrapper() {
+var JSONPlaceholder = (function () {
+    function JSONPlaceholder() {
         this.baseURL = 'https://jsonplaceholder.typicode.com';
     }
-    JSONWrapper.prototype.getBaseURL = function () {
+    JSONPlaceholder.prototype.getBaseURL = function () {
         return this.baseURL;
     };
-    JSONWrapper.prototype.getTodoById = function (id) {
-        return axios["default"].get(this.baseURL + "/todos/" + id)["catch"](function (e) { return e; });
+    JSONPlaceholder.prototype.getTodoById = function (id) {
+        return Axios__default['default'].get(this.baseURL + "/todos/" + id)["catch"](function (e) { return e.response; });
     };
-    JSONWrapper.prototype.getAllTodos = function () {
-        return axios["default"].get(this.baseURL + "/todos/")["catch"](function (e) { return e; });
+    JSONPlaceholder.prototype.getAllTodos = function () {
+        return Axios__default['default'].get(this.baseURL + "/todos/")["catch"](function (e) { return e.response; });
     };
-    JSONWrapper.prototype.getPostById = function (id) {
-        return axios["default"].get(this.baseURL + "/posts/" + id)["catch"](function (e) { return e; });
+    JSONPlaceholder.prototype.getPostById = function (id) {
+        return Axios__default['default'].get(this.baseURL + "/posts/" + id)["catch"](function (e) { return e.response; });
     };
-    JSONWrapper.prototype.getAllPosts = function (id) {
-        return axios["default"].get(this.baseURL + "/posts/")["catch"](function (e) { return e; });
+    JSONPlaceholder.prototype.getAllPosts = function (id) {
+        return Axios__default['default'].get(this.baseURL + "/posts/")["catch"](function (e) { return e.response; });
     };
-    JSONWrapper.prototype.getCommentsByPost = function (id) {
-        return axios["default"].get(this.getBaseURL() + "/posts/" + id + "/comments")["catch"](function (e) { return e; });
+    JSONPlaceholder.prototype.getCommentsByPost = function (id) {
+        return Axios__default['default'].get(this.getBaseURL() + "/posts/" + id + "/comments")["catch"](function (e) { return e.response; });
     };
-    JSONWrapper.prototype.createPost = function (post) {
-        return axios["default"].post(this.getBaseURL() + "/posts/", post)["catch"](function (e) { return e; });
+    JSONPlaceholder.prototype.createPost = function (post) {
+        return Axios__default['default'].post(this.getBaseURL() + "/posts/", post)["catch"](function (e) { return e.response; });
     };
-    JSONWrapper.prototype.updatePost = function (update) {
-        return axios["default"].put(this.getBaseURL() + "/posts", update)["catch"](function (e) { return e; });
+    JSONPlaceholder.prototype.updatePost = function (update) {
+        return Axios__default['default'].put(this.getBaseURL() + "/posts", update)["catch"](function (e) { return e; });
     };
-    JSONWrapper.prototype.patchPost = function (update) {
-        return axios["default"].patch(this.getBaseURL() + "/posts", update)["catch"](function (e) { return e; });
+    JSONPlaceholder.prototype.patchPost = function (update) {
+        return Axios__default['default'].patch(this.getBaseURL() + "/posts", update)["catch"](function (e) { return e; });
     };
-    JSONWrapper.prototype.deletePost = function (id) {
-        return axios["default"]["delete"](this.getBaseURL() + "/posts/" + id)["catch"](function (e) { return e; });
+    JSONPlaceholder.prototype.deletePost = function (id) {
+        return Axios__default['default']["delete"](this.getBaseURL() + "/posts/" + id)["catch"](function (e) { return e; });
     };
-    return JSONWrapper;
+    return JSONPlaceholder;
 }());
-exports["default"] = JSONWrapper;
-});
-
-unwrapExports(jsonWrapper);
-
-var freeApiWrap = createCommonjsModule(function (module, exports) {
-exports.__esModule = true;
 
 var FreeApiWrapper = {
-    JSONWrapper: jsonWrapper["default"]
+    JSONPlaceholder: JSONPlaceholder
 };
-exports["default"] = FreeApiWrapper;
-});
 
-var index = unwrapExports(freeApiWrap);
-
-module.exports = index;
+module.exports = FreeApiWrapper;

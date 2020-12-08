@@ -1,8 +1,8 @@
-import JSONWrapper from "./wrappers/jsonWrapper"
+import JSONPlaceholder from "./wrappers/JSONPlaceholder/JSONPlaceholder"
 
 
 const FreeApiWrapper = {
-  JSONWrapper
+  JSONPlaceholder
 }
 
 export default FreeApiWrapper
