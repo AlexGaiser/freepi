@@ -1,13 +1,13 @@
 {
-  "name": "freeapiwrap",
-  "version": "1.0.0",
+  "name": "freepi",
+  "version": "1.0.1",
   "description": "Wrapper for various free apis",
   "main": "dist/cjs.js",
   "browser": "dist/umd.js",
   "module": "index.js",
   "scripts": {
     "test": "npm run jest",
-    "build": "tsc index.ts && rollup -c"
+    "build": "rollup -c"
   },
   "author": "Alex Gaiser",
   "license": "ISC",
