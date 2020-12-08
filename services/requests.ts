@@ -1,23 +1,26 @@
-import Axios, { AxiosRequestConfig } from "axios"
+import Axios, { AxiosRequestConfig, AxiosPromise } from "axios"
 
-const post = (url:string, params:AxiosRequestConfig) => {
+const request = <T>(config:AxiosRequestConfig):AxiosPromise<T>=>{
+  return Axios(config).catch(e=>e.response);
+}
+
+const post = <T>(url:string, params:AxiosRequestConfig) => {
   const config:AxiosRequestConfig  = {
     method:'post',
     url,
     ...params
   }
-  return Axios(config);
+  return request<T>(config);
 }
-const get = (url:string, params?:AxiosRequestConfig) => {
+
+const get = <T>(url:string, params?:AxiosRequestConfig) => {
   const config:AxiosRequestConfig  = {
     method:'get',
     url,
     ...params
   }
-  return Axios(config);
+  return request<T>(config)
 }
-
-
 
 const requests = {
   post,
