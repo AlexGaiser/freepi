@@ -1,7 +1,7 @@
 export interface Post {
   body: string
   email: string
-  id: number
+  id?: number
   name: string
-  postId: number
+  postId?: number
 }
