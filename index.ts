@@ -1,7 +1,5 @@
 import JSONPlaceholder from "./wrappers/JSONPlaceholder/JSONPlaceholder"
 
-
-
 export {
   JSONPlaceholder
 }
