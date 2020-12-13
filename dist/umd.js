@@ -1,95 +1,114 @@
 (function (global, factory) {
-    typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('axios')) :
-    typeof define === 'function' && define.amd ? define(['axios'], factory) :
-    (global.umd = factory(global.axios));
-}(this, (function (Axios) { 'use strict';
+	typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('axios')) :
+	typeof define === 'function' && define.amd ? define(['axios'], factory) :
+	(global = typeof globalThis !== 'undefined' ? globalThis : global || self, global.umd = factory(global.axios));
+}(this, (function (axios) { 'use strict';
 
-    Axios = Axios && Axios.hasOwnProperty('default') ? Axios['default'] : Axios;
+	function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
 
-    /*! *****************************************************************************
-    Copyright (c) Microsoft Corporation.
+	var axios__default = /*#__PURE__*/_interopDefaultLegacy(axios);
 
-    Permission to use, copy, modify, and/or distribute this software for any
-    purpose with or without fee is hereby granted.
+	var commonjsGlobal = typeof globalThis !== 'undefined' ? globalThis : typeof window !== 'undefined' ? window : typeof global !== 'undefined' ? global : typeof self !== 'undefined' ? self : {};
 
-    THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH
-    REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY
-    AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT,
-    INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM
-    LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR
-    OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
-    PERFORMANCE OF THIS SOFTWARE.
-    ***************************************************************************** */
+	function unwrapExports (x) {
+		return x && x.__esModule && Object.prototype.hasOwnProperty.call(x, 'default') ? x['default'] : x;
+	}
 
-    var __assign = function() {
-        __assign = Object.assign || function __assign(t) {
-            for (var s, i = 1, n = arguments.length; i < n; i++) {
-                s = arguments[i];
-                for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p];
-            }
-            return t;
-        };
-        return __assign.apply(this, arguments);
-    };
+	function createCommonjsModule(fn, module) {
+		return module = { exports: {} }, fn(module, module.exports), module.exports;
+	}
 
-    var request = function (config) {
-        return Axios(config)["catch"](function (e) { return e.response; });
-    };
-    var post = function (url, params) {
-        var config = __assign({ method: 'post', url: url }, params);
-        return request(config);
-    };
-    var get = function (url, params) {
-        var config = __assign({ method: 'get', url: url }, params);
-        return request(config);
-    };
-    var requests = {
-        post: post,
-        get: get,
-    };
+	var requests_1 = createCommonjsModule(function (module, exports) {
+	var __assign = (commonjsGlobal && commonjsGlobal.__assign) || function () {
+	    __assign = Object.assign || function(t) {
+	        for (var s, i = 1, n = arguments.length; i < n; i++) {
+	            s = arguments[i];
+	            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+	                t[p] = s[p];
+	        }
+	        return t;
+	    };
+	    return __assign.apply(this, arguments);
+	};
+	exports.__esModule = true;
 
-    var get$1 = requests.get, post$1 = requests.post;
-    var JSONPlaceholder = (function () {
-        function JSONPlaceholder() {
-            this.baseURL = 'https://jsonplaceholder.typicode.com';
-        }
-        JSONPlaceholder.prototype.getBaseURL = function () {
-            return this.baseURL;
-        };
-        JSONPlaceholder.prototype.getTodoById = function (id) {
-            return get$1(this.baseURL + "/todos/" + id);
-        };
-        JSONPlaceholder.prototype.getAllTodos = function () {
-            return get$1(this.baseURL + "/todos/");
-        };
-        JSONPlaceholder.prototype.getPostById = function (id) {
-            return get$1(this.baseURL + "/posts/" + id);
-        };
-        JSONPlaceholder.prototype.getAllPosts = function (id) {
-            return get$1(this.baseURL + "/posts/");
-        };
-        JSONPlaceholder.prototype.getCommentsByPost = function (id) {
-            return get$1(this.getBaseURL() + "/posts/" + id + "/comments")["catch"](function (e) { return e.response; });
-        };
-        JSONPlaceholder.prototype.createPost = function (data) {
-            return post$1(this.getBaseURL() + "/posts/", { data: data });
-        };
-        JSONPlaceholder.prototype.updatePost = function (update) {
-            return Axios.put(this.getBaseURL() + "/posts", update)["catch"](function (e) { return e.response; });
-        };
-        JSONPlaceholder.prototype.patchPost = function (update) {
-            return Axios.patch(this.getBaseURL() + "/posts", update)["catch"](function (e) { return e; });
-        };
-        JSONPlaceholder.prototype.deletePost = function (id) {
-            return Axios["delete"](this.getBaseURL() + "/posts/" + id)["catch"](function (e) { return e; });
-        };
-        return JSONPlaceholder;
-    }());
+	var request = function (config) {
+	    return axios__default['default']["default"](config)["catch"](function (e) { return e.response; });
+	};
+	var post = function (url, params) {
+	    var config = __assign({ method: 'post', url: url }, params);
+	    return request(config);
+	};
+	var get = function (url, params) {
+	    var config = __assign({ method: 'get', url: url }, params);
+	    return request(config);
+	};
+	var requests = {
+	    post: post,
+	    get: get
+	};
+	exports["default"] = requests;
+	});
 
-    var FreePI = {
-        JSONPlaceholder: JSONPlaceholder
-    };
+	unwrapExports(requests_1);
 
-    return FreePI;
+	var JSONPlaceholder_1 = createCommonjsModule(function (module, exports) {
+	exports.__esModule = true;
+
+
+	var get = requests_1["default"].get, post = requests_1["default"].post;
+	var JSONPlaceholder = /** @class */ (function () {
+	    function JSONPlaceholder() {
+	        this.baseURL = 'https://jsonplaceholder.typicode.com';
+	    }
+	    JSONPlaceholder.prototype.getBaseURL = function () {
+	        return this.baseURL;
+	    };
+	    JSONPlaceholder.prototype.getTodoById = function (id) {
+	        return get(this.baseURL + "/todos/" + id);
+	    };
+	    JSONPlaceholder.prototype.getAllTodos = function () {
+	        return get(this.baseURL + "/todos/");
+	    };
+	    JSONPlaceholder.prototype.getPostById = function (id) {
+	        return get(this.baseURL + "/posts/" + id);
+	    };
+	    JSONPlaceholder.prototype.getAllPosts = function (id) {
+	        return get(this.baseURL + "/posts/");
+	    };
+	    JSONPlaceholder.prototype.getCommentsByPost = function (id) {
+	        return get(this.getBaseURL() + "/posts/" + id + "/comments")["catch"](function (e) { return e.response; });
+	    };
+	    JSONPlaceholder.prototype.createPost = function (data) {
+	        return post(this.getBaseURL() + "/posts/", { data: data });
+	    };
+	    JSONPlaceholder.prototype.updatePost = function (update) {
+	        return axios__default['default']["default"].put(this.getBaseURL() + "/posts", update)["catch"](function (e) { return e.response; });
+	    };
+	    JSONPlaceholder.prototype.patchPost = function (update) {
+	        return axios__default['default']["default"].patch(this.getBaseURL() + "/posts", update)["catch"](function (e) { return e; });
+	    };
+	    JSONPlaceholder.prototype.deletePost = function (id) {
+	        return axios__default['default']["default"]["delete"](this.getBaseURL() + "/posts/" + id)["catch"](function (e) { return e; });
+	    };
+	    return JSONPlaceholder;
+	}());
+	exports["default"] = JSONPlaceholder;
+	});
+
+	unwrapExports(JSONPlaceholder_1);
+
+	var freeApiLibrary = createCommonjsModule(function (module, exports) {
+	exports.__esModule = true;
+
+	var FreePI = {
+	    JSONPlaceholder: JSONPlaceholder_1["default"]
+	};
+	exports["default"] = FreePI;
+	});
+
+	var index = unwrapExports(freeApiLibrary);
+
+	return index;
 
 })));

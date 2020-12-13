@@ -4,7 +4,8 @@
       "noImplicitAny": false,
       "removeComments": true,
       "preserveConstEnums": true,
-      "sourceMap": true
+      "sourceMap": true,
+      "declaration": true,
   },
   "files": [
       "core.ts",
@@ -20,5 +21,6 @@
       "commandLineParser.ts",
       "tsc.ts",
       "diagnosticInformationMap.generated.ts"
-  ]
+  ],
+  "exclude": ["*.test.ts"]
 }
