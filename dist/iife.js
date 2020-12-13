@@ -1,9 +1,7 @@
-var iife = (function (axios) {
+var iife = (function (exports,axios) {
 	'use strict';
 
-	function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
-
-	var axios__default = /*#__PURE__*/_interopDefaultLegacy(axios);
+	axios = axios && axios.hasOwnProperty('default') ? axios['default'] : axios;
 
 	var commonjsGlobal = typeof globalThis !== 'undefined' ? globalThis : typeof window !== 'undefined' ? window : typeof global !== 'undefined' ? global : typeof self !== 'undefined' ? self : {};
 
@@ -30,7 +28,7 @@ var iife = (function (axios) {
 	exports.__esModule = true;
 
 	var request = function (config) {
-	    return axios__default['default']["default"](config)["catch"](function (e) { return e.response; });
+	    return axios["default"](config)["catch"](function (e) { return e.response; });
 	};
 	var post = function (url, params) {
 	    var config = __assign({ method: 'post', url: url }, params);
@@ -80,32 +78,28 @@ var iife = (function (axios) {
 	        return post(this.getBaseURL() + "/posts/", { data: data });
 	    };
 	    JSONPlaceholder.prototype.updatePost = function (update) {
-	        return axios__default['default']["default"].put(this.getBaseURL() + "/posts", update)["catch"](function (e) { return e.response; });
+	        return axios["default"].put(this.getBaseURL() + "/posts", update)["catch"](function (e) { return e.response; });
 	    };
 	    JSONPlaceholder.prototype.patchPost = function (update) {
-	        return axios__default['default']["default"].patch(this.getBaseURL() + "/posts", update)["catch"](function (e) { return e; });
+	        return axios["default"].patch(this.getBaseURL() + "/posts", update)["catch"](function (e) { return e; });
 	    };
 	    JSONPlaceholder.prototype.deletePost = function (id) {
-	        return axios__default['default']["default"]["delete"](this.getBaseURL() + "/posts/" + id)["catch"](function (e) { return e; });
+	        return axios["default"]["delete"](this.getBaseURL() + "/posts/" + id)["catch"](function (e) { return e; });
 	    };
 	    return JSONPlaceholder;
 	}());
 	exports["default"] = JSONPlaceholder;
 	});
 
-	unwrapExports(JSONPlaceholder_1);
+	var JSONPlaceholder = unwrapExports(JSONPlaceholder_1);
 
-	var freeApiLibrary = createCommonjsModule(function (module, exports) {
-	exports.__esModule = true;
-
-	var FreePI = {
-	    JSONPlaceholder: JSONPlaceholder_1["default"]
+	const freepi = {
+	  JSONPlaceholder
 	};
-	exports["default"] = FreePI;
-	});
 
-	var index = unwrapExports(freeApiLibrary);
+	exports.JSONPlaceholder = JSONPlaceholder;
+	exports.default = freepi;
 
-	return index;
+	return exports;
 
-}(axios));
+}({},axios));

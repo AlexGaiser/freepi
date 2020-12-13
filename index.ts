@@ -1,8 +1,12 @@
 import JSONPlaceholder from "./wrappers/JSONPlaceholder/JSONPlaceholder"
 
 
-const FreePI = {
+
+export {
+  JSONPlaceholder
+}
+const freepi = {
   JSONPlaceholder
 }
 
-export default FreePI
+export default freepi;

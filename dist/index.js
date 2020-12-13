@@ -1,10 +1,4 @@
-'use strict';
-
-Object.defineProperty(exports, '__esModule', { value: true });
-
-function _interopDefault (ex) { return (ex && (typeof ex === 'object') && 'default' in ex) ? ex['default'] : ex; }
-
-var axios = _interopDefault(require('axios'));
+import axios from 'axios';
 
 var commonjsGlobal = typeof globalThis !== 'undefined' ? globalThis : typeof window !== 'undefined' ? window : typeof global !== 'undefined' ? global : typeof self !== 'undefined' ? self : {};
 
@@ -100,5 +94,5 @@ const freepi = {
   JSONPlaceholder
 };
 
-exports.JSONPlaceholder = JSONPlaceholder;
-exports.default = freepi;
+export default freepi;
+export { JSONPlaceholder };
