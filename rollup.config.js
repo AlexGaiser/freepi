@@ -7,12 +7,19 @@ export default {
   output: [
     {
       file: 'dist/cjs.js',
-      format: 'cjs'
+      format: 'cjs',
+      exports: 'named'
+    },
+    {
+      file: 'dist/index.js',
+      format: 'es',
+      exports: 'named'
     },
     {
       file: 'dist/umd.js',
       format: 'umd',
       name: 'umd',
+      exports: 'named',
       globals: {
         'axios':'axios'
       }
@@ -21,6 +28,7 @@ export default {
       file: 'dist/iife.js',
       format: 'iife',
       name: 'iife',
+      exports: 'named',
       globals: {
         'axios':'axios'
       }
@@ -29,7 +37,7 @@ export default {
   plugins: [
     resolve(),
     commonjs(),
-    typescript()
+    // typescript()
   ],
   external: [
     'lodash/random',

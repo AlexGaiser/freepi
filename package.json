@@ -3,7 +3,7 @@
   "version": "1.0.1",
   "description": "Wrapper for various free apis",
   "main": "dist/cjs.js",
-  "browser": "dist/umd.js",
+  "browser": "dist/index.js",
   "module": "index.js",
   "scripts": {
     "test": "jest",

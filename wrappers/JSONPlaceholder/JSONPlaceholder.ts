@@ -23,7 +23,6 @@ class JSONPlaceholder {
     return get<Todo[]>(`${this.baseURL}/todos/`)
   }
 
-  
   public getPostById(id:number):Promise<AxiosResponse<Post>> {
     return get<Post>(`${this.baseURL}/posts/${id}`)
   }
@@ -51,7 +50,6 @@ class JSONPlaceholder {
   public deletePost(id:number):Promise<AxiosResponse> {
     return Axios.delete(`${this.getBaseURL()}/posts/${id}`).catch(e=>e)
   }
-
 
 }
 
