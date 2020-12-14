@@ -29,6 +29,12 @@ test('post req post', async ()=>{
   expect(res.data).toMatchObject(post)
 })
 
+test('get post with params', async ()=>{
+  const res = await jsonPlaceholder.findPosts({id:1})
+  expect(res.status).toBe(200)
+
+  expect(res.data[0].id).toBe(1)
+})
 
 test('get todo with params', async()=>{
   const response = await jsonPlaceholder.findTodos({id:1})
