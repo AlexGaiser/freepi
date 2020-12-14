@@ -4,7 +4,7 @@ const request = <T>(config:AxiosRequestConfig):AxiosPromise<T>=>{
   return Axios(config).catch(e=>e.response);
 }
 
-const post = <T>(url:string, params:AxiosRequestConfig) => {
+const post = <T>(url:string, params:AxiosRequestConfig):AxiosPromise<T> => {
   const config:AxiosRequestConfig  = {
     method:'post',
     url,
@@ -13,7 +13,7 @@ const post = <T>(url:string, params:AxiosRequestConfig) => {
   return request<T>(config);
 }
 
-const get = <T>(url:string, params?:AxiosRequestConfig) => {
+const get = <T>(url:string, params?:AxiosRequestConfig):AxiosPromise<T> => {
   const config:AxiosRequestConfig  = {
     method:'get',
     url,
