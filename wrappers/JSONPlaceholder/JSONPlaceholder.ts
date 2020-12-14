@@ -2,6 +2,7 @@ import Axios, { AxiosResponse } from "axios";
 import requests from "../../services/requests";
 import { Post } from "./models/Post";
 import { Todo } from "./models/Todo";
+import { User } from "./models/User";
 
 const {get, post} = requests;
 class JSONPlaceholder {
@@ -11,46 +12,64 @@ class JSONPlaceholder {
     this.baseURL = 'https://jsonplaceholder.typicode.com'
   }
 
-  public getBaseURL (){
+  public getBaseURL ():string{
     return this.baseURL;
   }
 
-  public getTodoById(id:number):Promise<AxiosResponse> {
+  public findTodos(params) {
+    return get<Todo[]>(`${this.getBaseURL()}/todos`, {params})
+  }
+
+  public getTodoById(id:number) {
     return get<Todo>(`${this.baseURL}/todos/${id}`)
   }
 
-  public getAllTodos():Promise<AxiosResponse<Todo[]>> {
+  public getAllTodos() {
     return get<Todo[]>(`${this.baseURL}/todos/`)
   }
 
-  public getPostById(id:number):Promise<AxiosResponse<Post>> {
+  public findPosts(params) {
+    return get<Post[]>(`${this.getBaseURL()}/posts/`, {params})
+  }
+
+  public getPostById(id:number) {
     return get<Post>(`${this.baseURL}/posts/${id}`)
   }
 
-  public getAllPosts(id:number):Promise<AxiosResponse<Post[]>> {
+  public getAllPosts() {
     return get<Post[]>(`${this.baseURL}/posts/`)
   }
 
-  public getCommentsByPost(id:number):Promise<AxiosResponse> {
+  public getCommentsByPost(id:number) {
     return get<Post>(`${this.getBaseURL()}/posts/${id}/comments`).catch(e=>e.response)
   }
 
-  public createPost(data:Post):Promise<AxiosResponse> {
+  public createPost(data:Post) {
     return post<Post>(`${this.getBaseURL()}/posts/`, {data});
   }
 
-  public updatePost(update):Promise<AxiosResponse> {
+  public updatePost(update) {
     return Axios.put(`${this.getBaseURL()}/posts`, update).catch(e=>e.response)
   }
 
-  public patchPost(update):Promise<AxiosResponse> {
+  public patchPost(update) {
     return Axios.patch(`${this.getBaseURL()}/posts`, update).catch(e=>e)
   }
 
-  public deletePost(id:number):Promise<AxiosResponse> {
+  public deletePost(id:number) {
     return Axios.delete(`${this.getBaseURL()}/posts/${id}`).catch(e=>e)
   }
 
-}
+  public getAllUsers() {
+    return get<User[]>(`${this.getBaseURL()}/users/`)
+  }
 
+  public findUsers(params) {
+    return get<User[]>(`${this.getBaseURL()}/users/`, {params})
+  }
+
+  public getUserById(id:number) {
+    return get<User>(`${this.getBaseURL()}/users/${id}`)
+  }
+}
 export default JSONPlaceholder

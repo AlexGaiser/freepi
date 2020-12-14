@@ -28,3 +28,28 @@ test('post req post', async ()=>{
   expect(res.status).toBe(201)
   expect(res.data).toMatchObject(post)
 })
+
+test('get post with params', async ()=>{
+  const res = await jsonPlaceholder.findPosts({id:1})
+  expect(res.status).toBe(200)
+
+  expect(res.data[0].id).toBe(1)
+})
+
+test('get todo with params', async()=>{
+  const response = await jsonPlaceholder.findTodos({id:1})
+  expect(response.status).toBe(200)
+  console.log(response.data)
+  expect(response.data[0].id).toBe(1)
+})
+
+test('users', async()=>{
+  const userById = await jsonPlaceholder.getUserById(1)
+  const allUsers = await jsonPlaceholder.getAllUsers()
+  const findUsers = await jsonPlaceholder.findUsers({name: "Ervin Howell"})
+  expect(userById.status).toBe(200)
+  expect(userById.data.id).toBe(1)
+  expect(allUsers.status).toBe(200)
+  expect(allUsers.data.length).toBeGreaterThan(1)
+  expect(findUsers.data[0].name).toBe("Ervin Howell")
+});
