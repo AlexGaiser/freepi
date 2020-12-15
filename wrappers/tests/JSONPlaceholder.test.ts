@@ -99,4 +99,26 @@ describe('JsonPlaceholder', () => {
     expect(res.data).toMatchObject(updatedPost);
   });
 
+  test('Should correctly update a Post with new content using the patchPost method', async () => {
+    const postId: number = 5;
+    const updatedPost: Post = {
+      id: postId,
+      userId: 7,
+      title: "Foo",
+      body: "Bar",
+    }
+
+    const res = await jsonPlaceholder.patchPost(postId, updatedPost);
+    expect(res.status).toBe(success);
+    expect(res.data).toMatchObject(updatedPost);
+  });
+
+  test('Should receive a success response from a delete post request', async () => {
+    // JsonPlaceholder will only simulate deleting a post, so can't test if post is really deleted
+
+    const postId: number = 5;
+    const res = await jsonPlaceholder.deletePost(postId);
+    expect(res.status).toBe(success);
+  });
+
 });
