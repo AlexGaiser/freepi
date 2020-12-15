@@ -26,10 +26,12 @@ describe('JsonPlaceholder', () => {
   
   test('post req post', async ()=>{
     const post:Post = {
-      email:'test@test.com',
-      name: 'my name',
-      body: 'this is the body'
+      userId: 5,
+      id: 101,  // 100 posts are built in, new creations start at 101
+      title: "This is the Title",
+      body: 'This is the body'
     }
+
     const res = await jsonPlaceholder.createPost(post)
     expect(res.status).toBe(createdSuccessfully)
     expect(res.data).toMatchObject(post)
