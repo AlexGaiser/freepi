@@ -1,5 +1,6 @@
 import JSONPlaceholder from "../JSONPlaceholder/JSONPlaceholder";
 import { Post } from "../JSONPlaceholder/models/Post";
+import { Comment } from '../JSONPlaceholder/Models/Comment';
 
 describe('JsonPlaceholder', () => {
 
@@ -38,7 +39,7 @@ describe('JsonPlaceholder', () => {
   });
 
   test('should get post by id', async() => {
-    const postId: number = 5
+    const postId: number = 5;
     const post: Post = {
       userId: 1,
       id: postId,
@@ -69,19 +70,19 @@ describe('JsonPlaceholder', () => {
   });
 
   test('Should retun a list of comments on a post, the first of which should match expected values', async () => {
-    const postId: number = 5;
-    const expectedComment: Comment {
-      postId,
+
+    const postIdNum: number = 5;
+    const expectedComment: Comment = {
+      postId: 5,
       id: 21,
       name: "aliquid rerum mollitia qui a consectetur eum sed",
       email: "Noemie@marques.me",
       body: "deleniti aut sed molestias explicabo\ncommodi odio ratione nesciunt\nvoluptate doloremque est\nnam autem error delectus",
     }
 
-    const res = await jsonPlaceholder.getCommentsByPost(postId)
+    const res = await jsonPlaceholder.getCommentsByPost(postIdNum)
     expect(res.status).toBe(success);
     expect(res.data[0]).toMatchObject(expectedComment);
-
   });
 
 });
