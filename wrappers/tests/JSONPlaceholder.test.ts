@@ -53,8 +53,19 @@ describe('JsonPlaceholder', () => {
 
   test('Should return an array of all 100 built in posts', async () => {
     const res = await jsonPlaceholder.getAllPosts();
+    const postCount: number = 100;
+    
     expect(res.status).toBe(success);
-    expect(res.data.length).toEqual(100);
+    expect(res.data.length).toEqual(postCount);
+  });
+
+  test('should get all comments from a specific post', async() => {
+    const postId: number = 5;
+    const commentCount: number = 5;
+
+    const res = await jsonPlaceholder.getCommentsByPost(postId)
+    expect(res.status).toBe(success);
+    expect(res.data.length).toEqual(commentCount);
   });
 
 });
