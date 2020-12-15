@@ -28,7 +28,7 @@ class JSONPlaceholder {
     return get<Post>(`${this.baseURL}/posts/${id}`)
   }
 
-  public getAllPosts(id:number):Promise<AxiosResponse<Post[]>> {
+  public getAllPosts():Promise<AxiosResponse<Post[]>> {
     return get<Post[]>(`${this.baseURL}/posts/`)
   }
 

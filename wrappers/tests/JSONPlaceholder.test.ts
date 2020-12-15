@@ -49,6 +49,12 @@ describe('JsonPlaceholder', () => {
     const res = await jsonPlaceholder.getPostById(postId)
     expect(res.status).toBe(success);
     expect(res.data).toMatchObject(post);
-  })
+  });
+
+  test('Should return an array of all 100 built in posts', async () => {
+    const res = await jsonPlaceholder.getAllPosts();
+    expect(res.status).toBe(success);
+    expect(res.data.length).toEqual(100);
+  });
 
 });
