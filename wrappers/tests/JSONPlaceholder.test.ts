@@ -35,4 +35,21 @@ describe('JsonPlaceholder', () => {
     expect(res.data).toMatchObject(post)
   });
 
+  test('should get post by id', async() => {
+    
+    const postId: number = 5
+    const post:Post = {
+      userId: 1,
+      id: postId,
+      title: "nesciunt quas odio",
+      body: "repudiandae veniam quaerat sunt sed alias aut fugiat sit autem sed est voluptatem omnis possimus esse voluptatibus quis est aut tenetur dolor neque",
+    };
+
+    const res = await jsonPlaceholder.getPostById(postId)
+    expect(res.status).toBe(success);
+    expect(res.data).toMatchObject(post);
+
+
+  })
+
 });
