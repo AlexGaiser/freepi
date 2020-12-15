@@ -8,7 +8,6 @@ describe('JsonPlaceholder', () => {
   const success = 200;
   const notFound = 404;
   const createdSuccessfully = 201;
-  //const 
   
   test('get all Todos', async () => {
     const res = await jsonPlaceholder.getAllTodos()
