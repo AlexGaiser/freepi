@@ -3,6 +3,7 @@ import requests from "../../services/requests";
 import { Post } from "./models/Post";
 import { Todo } from "./models/Todo";
 import { User } from "./models/User";
+import { todos } from "./services/todos";
 
 const {get, post} = requests;
 class JSONPlaceholder {
@@ -15,6 +16,7 @@ class JSONPlaceholder {
   public getBaseURL ():string{
     return this.baseURL;
   }
+  public todos = todos(this.getBaseURL())
 
   public findTodos(params) {
     return get<Todo[]>(`${this.getBaseURL()}/todos`, {params})
@@ -27,7 +29,7 @@ class JSONPlaceholder {
   public getAllTodos() {
     return get<Todo[]>(`${this.baseURL}/todos/`)
   }
-
+  
   public findPosts(params) {
     return get<Post[]>(`${this.getBaseURL()}/posts/`, {params})
   }

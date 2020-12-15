@@ -4,13 +4,13 @@ import { Post } from "../JSONPlaceholder/models/Post";
 const jsonPlaceholder = new JSONPlaceholder()
 
 test('get all Todos', async () => {
-  const res = await jsonPlaceholder.getAllTodos()
+  const res = await jsonPlaceholder.todos.findAll()
   expect(res.status).toBe(200);
   
 });
 
 test('get todos ', async ()=>{
-  const res = await jsonPlaceholder.getTodoById(1)
+  const res = await jsonPlaceholder.todos.getById(1)
   const errorRes = await jsonPlaceholder.getTodoById(-100000)
 
   expect(res.status).toBe(200)
@@ -36,8 +36,8 @@ test('get post with params', async ()=>{
   expect(res.data[0].id).toBe(1)
 })
 
-test('get todo with params', async()=>{
-  const response = await jsonPlaceholder.findTodos({id:1})
+test('get todo with params', async()=>{``
+  const response = await jsonPlaceholder.todos.find({id:1})
   expect(response.status).toBe(200)
   console.log(response.data)
   expect(response.data[0].id).toBe(1)
