@@ -40,7 +40,7 @@ describe('JsonPlaceholder', () => {
 
   test('should get post by id', async() => {
     const postId: number = 5;
-    const post: Post = {
+    const expectedPost: Post = {
       userId: 1,
       id: postId,
       title: "nesciunt quas odio",
@@ -49,7 +49,7 @@ describe('JsonPlaceholder', () => {
 
     const res = await jsonPlaceholder.getPostById(postId)
     expect(res.status).toBe(success);
-    expect(res.data).toMatchObject(post);
+    expect(res.data).toMatchObject(expectedPost);
   });
 
   test('Should return an array of all 100 built in posts', async () => {

@@ -40,8 +40,8 @@ class JSONPlaceholder {
     return post<Post>(`${this.getBaseURL()}/posts/`, {data});
   }
 
-  public updatePost(update):Promise<AxiosResponse> {
-    return Axios.put(`${this.getBaseURL()}/posts`, update).catch(e=>e.response)
+  public updatePost(postId: number, update:Post):Promise<AxiosResponse> {
+    return Axios.put(`${this.getBaseURL()}/posts/${postId}`, update).catch(e=>e.response)
   }
 
   public patchPost(update):Promise<AxiosResponse> {
