@@ -85,4 +85,18 @@ describe('JsonPlaceholder', () => {
     expect(res.data[0]).toMatchObject(expectedComment);
   });
 
+  test('Should correctly update a Post with new content', async () => {
+    const postId: number = 5;
+    const updatedPost: Post = {
+      id: postId,
+      userId: 7,
+      title: "Foo",
+      body: "Bar",
+    }
+
+    const res = await jsonPlaceholder.updatePost(postId, updatedPost);
+    expect(res.status).toBe(success);
+    expect(res.data).toMatchObject(updatedPost);
+  });
+
 });
