@@ -39,7 +39,7 @@ describe('JsonPlaceholder', () => {
 
   test('should get post by id', async() => {
     const postId: number = 5
-    const post:Post = {
+    const post: Post = {
       userId: 1,
       id: postId,
       title: "nesciunt quas odio",
@@ -54,18 +54,34 @@ describe('JsonPlaceholder', () => {
   test('Should return an array of all 100 built in posts', async () => {
     const res = await jsonPlaceholder.getAllPosts();
     const postCount: number = 100;
-    
+
     expect(res.status).toBe(success);
     expect(res.data.length).toEqual(postCount);
   });
 
-  test('should get all comments from a specific post', async() => {
+  test('Should get all comments from a specific post', async() => {
     const postId: number = 5;
     const commentCount: number = 5;
 
     const res = await jsonPlaceholder.getCommentsByPost(postId)
     expect(res.status).toBe(success);
     expect(res.data.length).toEqual(commentCount);
+  });
+
+  test('Should retun a list of comments on a post, the first of which should match expected values', async () => {
+    const postId: number = 5;
+    const expectedComment: Comment {
+      postId,
+      id: 21,
+      name: "aliquid rerum mollitia qui a consectetur eum sed",
+      email: "Noemie@marques.me",
+      body: "deleniti aut sed molestias explicabo\ncommodi odio ratione nesciunt\nvoluptate doloremque est\nnam autem error delectus",
+    }
+
+    const res = await jsonPlaceholder.getCommentsByPost(postId)
+    expect(res.status).toBe(success);
+    expect(res.data[0]).toMatchObject(expectedComment);
+
   });
 
 });
