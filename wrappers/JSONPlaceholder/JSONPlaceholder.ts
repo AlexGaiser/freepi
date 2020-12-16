@@ -4,20 +4,26 @@ import { Post } from "./models/Post";
 import { Todo } from "./models/Todo";
 import { User } from "./models/User";
 import { todos } from "./services/todos";
+import { users } from "./services/users";
+import { posts } from "./services/posts";
 
 const {get, post} = requests;
 class JSONPlaceholder {
-  private baseURL:string;
+  private baseURL:string = 'https://jsonplaceholder.typicode.com';
   
   constructor() {
-    this.baseURL = 'https://jsonplaceholder.typicode.com'
+    // this.baseURL = 'https://jsonplaceholder.typicode.com'
+    
   }
+
+  public todos = todos(this.getBaseURL())
+  public users = users(this.getBaseURL())
+  public posts = posts(this.getBaseURL())
 
   public getBaseURL ():string{
     return this.baseURL;
   }
-  public todos = todos(this.getBaseURL())
-
+  
   public findTodos(params) {
     return get<Todo[]>(`${this.getBaseURL()}/todos`, {params})
   }
