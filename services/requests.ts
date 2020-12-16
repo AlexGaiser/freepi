@@ -1,7 +1,7 @@
 import Axios, { AxiosRequestConfig, AxiosPromise } from "axios"
 
-const request = <T>(config:AxiosRequestConfig):AxiosPromise<T>=>{
-  return Axios(config)
+export const request = <T>(config:AxiosRequestConfig):AxiosPromise<T>=>{
+  return Axios(config).catch(e=>e.response);
 }
 
 export const post = <T>(url:string, params:AxiosRequestConfig):AxiosPromise<T> => {
