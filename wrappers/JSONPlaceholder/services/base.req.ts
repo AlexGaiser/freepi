@@ -1,4 +1,5 @@
-import { get } from "../../../services/requests"
+import { AxiosRequestConfig } from "axios"
+import { get, post } from "../../../services/requests"
 
 
 export const getById = <T>(path:string) => (baseURL:string) => (id:number | string) => {
@@ -18,12 +19,17 @@ export const find = <T>(path:string) => (baseURL:string)=> (params)=> {
   return get<T[]>(`${baseURL}${path}`, {params})
 }
 
+export const create = <T>(path:string)=> (baseURL:string)=> (data) => {
+  return post<T>(`${baseURL}${path}`, {data})
+}
 
 
-export const getBaseFunctions= <T>(path) =>(baseURL)=> {
+
+export const getBaseFunctions= <T>(path:string) =>({url}:AxiosRequestConfig)=> {
   return {
-    find:find<T>(path)(baseURL),
-    findAll: findAll<T>(path)(baseURL),
-    getById: getById<T>(path)(baseURL)
+    find:find<T>(path)(url),
+    findAll: findAll<T>(path)(url),
+    getById: getById<T>(path)(url),
+    create: create<T>(path)(url),
   }
 }
