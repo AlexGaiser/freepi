@@ -16,9 +16,9 @@ class JSONPlaceholder {
     
   }
 
-  public todos = todos(this.getBaseURL())
-  public users = users(this.getBaseURL())
-  public posts = posts(this.getBaseURL())
+  public todos = todos({url:this.getBaseURL()})
+  public users = users({url:this.getBaseURL()})
+  public posts = posts({url:this.getBaseURL()})
 
   public getBaseURL ():string{
     return this.baseURL;
