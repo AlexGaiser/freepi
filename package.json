@@ -6,11 +6,11 @@
   "browser": "dist/index.js",
   "module": "index.js",
   "scripts": {
-    "test": "jest",
+    "test": "jest --coverage",
     "build": "npm run test && rollup -c",
     "build-dev": "rollup -c"
   },
-  "author": "Alex Gaiser",
+  "author": "Alex Gaiser and Ian Scott",
   "license": "ISC",
   "dependencies": {
     "@types/axios": "^0.14.0",
