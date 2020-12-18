@@ -4,90 +4,156 @@ import { Post } from "../JSONPlaceholder/models/Post";
 import { Todo } from "../JSONPlaceholder/models/Todo";
 import { User } from "../JSONPlaceholder/models/User";
 
-const jsonPlaceholder = new JSONPlaceholder()
+describe('JsonPlaceholder', () => {
 
-test('get all Todos', async () => {
-  const res = await jsonPlaceholder.todos.findAll()
-  expect(res.status).toBe(200);
+  const jsonPlaceholder = new JSONPlaceholder()
   
-});
-
-test('get todos ', async ()=>{
-  const res = await jsonPlaceholder.todos.getById(1)
-  const errorRes = await jsonPlaceholder.getTodoById(-100000)
-
-  expect(res.status).toBe(200)
-  expect(errorRes.status).toBe(404)
-
-})
-
-test('post req post', async ()=>{
-  const post:Post = {
-    email:'test@test.com',
-    name: 'my name',
-    body: 'this is the body'
-  }
-  const res = await jsonPlaceholder.posts.create(post)
-  expect(res.status).toBe(201)
-  expect(res.data).toMatchObject(post)
-})
-
-test('get post with params', async ()=>{
-  const res = await jsonPlaceholder.findPosts({id:1})
-  expect(res.status).toBe(200)
-
-  expect(res.data[0].id).toBe(1)
-})
-
-test('get todo with params', async()=>{``
-  const response = await jsonPlaceholder.todos.find({id:1})
-  expect(response.status).toBe(200)
-  console.log(response.data)
-  expect(response.data[0].id).toBe(1)
-})
-
-test('create todo', async ()=>{
-  const todo:Todo = {
-    userId: 1,
-    title: 'test todo title',
-    completed:false,
-  }
-  const response = await jsonPlaceholder.todos.create(todo);
-  expect(response.status).toBe(201);
-  expect(response.data).toMatchObject(todo);
-})
-
-test('users', async()=>{
-  const user:User = {
-    username:"test user",
-    name: "name namington",
-    email:"mail@mail.com",
-    address: {
-      street:"fake street",
-      city:"metropolis",
-      zipcode:"11111"
-    },
-    geo: {
-      lat: "111111",
-      lng: "1111111",
-    },
-    phone:"1234567890",
-    website: "www.web.com",
-    company: {
-      name: "Coolcompany, Inc",
-      catchPhrase: "The coolest company",
-      bs: "test bs"
+  test('should return all todo items', async () => {
+    const res = await jsonPlaceholder.todos.findAll();
+    
+    expect(res.status).toBe(200);
+    expect(res.data.length).toBeGreaterThan(1);
+  });
+  
+  test('should return a specific todos by Id ', async ()=>{
+    const expectedTodo:Todo = {
+      userId: 1,
+      id: 8,
+      title: "quo adipisci enim quam ut ab",
+      completed: true,
     }
-  }
-  const userById = await jsonPlaceholder.getUserById(1)
-  const allUsers = await jsonPlaceholder.getAllUsers()
-  const findUsers = await jsonPlaceholder.findUsers({name: "Ervin Howell"})
-  const createdUser = await jsonPlaceholder.users.create(user)
-  expect(userById.status).toBe(200)
-  expect(userById.data.id).toBe(1)
-  expect(allUsers.status).toBe(200)
-  expect(allUsers.data.length).toBeGreaterThan(1)
-  expect(findUsers.data[0].name).toBe("Ervin Howell")
-  expect(createdUser.data).toMatchObject(user)
 
+    const res = await jsonPlaceholder.todos.getById(8);
+
+    expect(res.status).toBe(200);
+    expect(res.data).toMatchObject(expectedTodo);
+  });
+
+  test('should return a not-found error when searching for a todo by an id that does not exist', async () => {
+    const res = await jsonPlaceholder.todos.getById(-100000);
+    expect(res.status).toBe(404);
+  });
+  
+  test('should return a success response when creating a new todo', async () => {
+    const newTodo: Todo = {
+      userId: 921,
+      id: 3000,
+      title: "This is a real Todo!",
+      completed: false,
+    }
+
+    const res = await jsonPlaceholder.todos.create(newTodo);
+    expect(res.status).toBe(201);
+  });
+
+  test('should return all posts', async () => {
+    const res = await jsonPlaceholder.posts.findAll();
+
+    expect(res.status).toBe(200);
+    expect(res.data.length).toBeGreaterThan(1);
+  });
+
+  test('should return a post by Id ', async ()=>{
+    const expectedPost: Post = {
+      userId: 1,
+      id: 5,
+      title: "nesciunt quas odio",
+      body: "repudiandae veniam quaerat sunt sed\nalias aut fugiat sit autem sed est\nvoluptatem omnis possimus esse voluptatibus quis\nest aut tenetur dolor neque",
+    }
+
+    const res = await jsonPlaceholder.posts.getById(5);
+
+    expect(res.status).toBe(200);
+    expect(res.data).toMatchObject(expectedPost);
+  });
+
+  test('should return a not-found error when searching for a post by an id that does not exist', async () => {
+    const res = await jsonPlaceholder.todos.getById(-100000);
+    
+    expect(res.status).toBe(404);
+  });
+  
+  test('should return a success response when creating a new post', async () => {
+    const newPost: Post = {
+      userId: 10,
+      id: 978,
+      title: "This is a Title!",
+      body: "This is the body!",
+    }
+
+    const res = await jsonPlaceholder.posts.create(newPost);
+
+    expect(res.status).toBe(201);
+  });
+
+  test('should return all users', async () => {
+    const res = await jsonPlaceholder.users.findAll();
+    expect(res.status).toBe(200);
+    expect(res.data.length).toBeGreaterThan(1);
+  });
+
+  test('should return a user by id ', async ()=>{
+    const expectedUser: User = {
+      id: 5,
+      name: "Chelsey Dietrich",
+      username: "Kamren",
+      email: "Lucio_Hettinger@annie.ca",
+      address: {
+        street: "Skiles Walks",
+        suite: "Suite 351",
+        city: "Roscoeview",
+        zipcode: "33263",
+          geo: {
+            lat: "-31.8129",
+            lng: "62.5342",
+            }
+      },
+      phone: "(254)954-1289",
+      website: "demarco.info",
+      company: {
+        name: "Keebler LLC",
+        catchPhrase: "User-centric fault-tolerant solution",
+        bs: "revolutionize end-to-end systems"
+      }
+    }
+
+    const res = await jsonPlaceholder.users.getById(5);
+
+    expect(res.status).toBe(200);
+    expect(res.data).toMatchObject(expectedUser);
+  });
+
+  test('should return a not-found error when searching for a user by an id that does not exist', async () => {
+    const res = await jsonPlaceholder.users.getById(-100000);
+    expect(res.status).toBe(404);
+  });
+  
+  test('should return a success response when creating a new user', async () => {
+    const newUser: User = {
+      id: 97,
+      name: "Ian Scott",
+      username: "Uber_Scott",
+      email: "IanIsDaBest@CoolIan.net",
+      address: {
+        street: "Apple St",
+        suite: "Suite 333",
+        city: "Nagasaki",
+        zipcode: "716-239",
+          geo: {
+            lat: "65.9817",
+            lng: "27.0012",
+            }
+      },
+      phone: "(123)456-7890",
+      website: "IanIsCool.io",
+      company: {
+        name: "Green Is Best",
+        catchPhrase: "Waaagh!",
+        bs: "What is bs?"
+      }
+    }
+
+    const res = await jsonPlaceholder.posts.create(newUser);
+    expect(res.status).toBe(201);
+  });
 });
