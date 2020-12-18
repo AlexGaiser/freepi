@@ -7,10 +7,6 @@ export interface User {
   username: string,
   email: string,
   address: Address,
-  geo: {
-    lat: string,
-    lng: string
-  }
   phone: string,
   website:string,
   company: Company

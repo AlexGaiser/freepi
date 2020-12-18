@@ -45,7 +45,6 @@ describe('JsonPlaceholder', () => {
     expect(res.status).toBe(201);
   });
 
-
   test('should return all posts', async () => {
     const res = await jsonPlaceholder.posts.findAll();
     expect(res.status).toBe(200);
@@ -70,7 +69,7 @@ describe('JsonPlaceholder', () => {
     expect(res.status).toBe(404);
   });
   
-  test('should return a success response when creating a new todo', async () => {
+  test('should return a success response when creating a new post', async () => {
     const newPost: Post = {
       userId: 10,
       id: 978,
@@ -83,24 +82,65 @@ describe('JsonPlaceholder', () => {
   });
 
 
-  
-  test('get todo with params', async()=>{``
-    const response = await jsonPlaceholder.todos.find({id:1})
-    expect(response.status).toBe(200)
-    console.log(response.data)
-    expect(response.data[0].id).toBe(1)
-  })
-  
-  test('create todo', async ()=>{
-    const todo:Todo = {
-      userId: 1,
-      title: 'test todo title',
-      completed:false,
+
+
+  test('should return all users', async () => {
+    const res = await jsonPlaceholder.users.findAll();
+    expect(res.status).toBe(200);
+  });
+
+  test('should return a user by id ', async ()=>{
+    const expectedUser: User = {
+      id: 5,
+      name: "Chelsey Dietrich",
+      username: "Kamren",
+      email: "Lucio_Hettinger@annie.ca",
+      address: {
+      street: "Skiles Walks",
+      suite: "Suite 351",
+      city: "Roscoeview",
+      zipcode: "33263",
+      geo: {
+        lat: "-31.8129",
+        lng: "62.5342",
+        }
+      },
+      phone: "(254)954-1289",
+      website: "demarco.info",
+      company: {
+      name: "Keebler LLC",
+      catchPhrase: "User-centric fault-tolerant solution",
+      bs: "revolutionize end-to-end systems"
+      }
     }
-    const response = await jsonPlaceholder.todos.create(todo);
-    expect(response.status).toBe(201);
-    expect(response.data).toMatchObject(todo);
-  })
+
+    const res = await jsonPlaceholder.posts.getById(5);
+
+    expect(res.status).toBe(200);
+    expect(res.data).toMatchObject(expectedUser);
+  });
+
+  test('should return a not-found error when searching for a post by an id that does not exist', async () => {
+    const res = await jsonPlaceholder.todos.getById(-100000);
+    expect(res.status).toBe(404);
+  });
+  
+  test('should return a success response when creating a new post', async () => {
+    const newPost: Post = {
+      userId: 10,
+      id: 978,
+      title: "This is a Title!",
+      body: "This is the body!",
+    }
+
+    const res = await jsonPlaceholder.posts.create(newPost);
+    expect(res.status).toBe(201);
+  });
+
+
+
+
+
   
   test('users', async()=>{
     const user:User = {
