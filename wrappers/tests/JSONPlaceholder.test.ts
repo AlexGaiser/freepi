@@ -11,7 +11,6 @@ describe('JsonPlaceholder', () => {
   test('should return all todo items', async () => {
     const res = await jsonPlaceholder.todos.findAll();
     expect(res.status).toBe(200);
-    expect(res.data.length).toEqual(200);
     
   });
   
@@ -46,25 +45,44 @@ describe('JsonPlaceholder', () => {
     expect(res.status).toBe(201);
   });
 
-  
 
-  test('post req post', async ()=>{
-    const post:Post = {
-      email:'test@test.com',
-      name: 'my name',
-      body: 'this is the body'
+  test('should return all posts', async () => {
+    const res = await jsonPlaceholder.posts.findAll();
+    expect(res.status).toBe(200);
+  });
+
+  test('should return a post by Id ', async ()=>{
+    const expectedPost: Post = {
+      userId: 1,
+      id: 5,
+      title: "nesciunt quas odio",
+      body: "repudiandae veniam quaerat sunt sed\nalias aut fugiat sit autem sed est\nvoluptatem omnis possimus esse voluptatibus quis\nest aut tenetur dolor neque",
     }
-    const res = await jsonPlaceholder.posts.create(post)
-    expect(res.status).toBe(201)
-    expect(res.data).toMatchObject(post)
-  })
+
+    const res = await jsonPlaceholder.posts.getById(5);
+
+    expect(res.status).toBe(200);
+    expect(res.data).toMatchObject(expectedPost);
+  });
+
+  test('should return a not-found error when searching for a post by an id that does not exist', async () => {
+    const res = await jsonPlaceholder.todos.getById(-100000);
+    expect(res.status).toBe(404);
+  });
   
-  test('get post with params', async ()=>{
-    const res = await jsonPlaceholder.findPosts({id:1})
-    expect(res.status).toBe(200)
-  
-    expect(res.data[0].id).toBe(1)
-  })
+  test('should return a success response when creating a new todo', async () => {
+    const newPost: Post = {
+      userId: 10,
+      id: 978,
+      title: "This is a Title!",
+      body: "This is the body!",
+    }
+
+    const res = await jsonPlaceholder.posts.create(newPost);
+    expect(res.status).toBe(201);
+  });
+
+
   
   test('get todo with params', async()=>{``
     const response = await jsonPlaceholder.todos.find({id:1})
