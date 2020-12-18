@@ -10,8 +10,9 @@ describe('JsonPlaceholder', () => {
   
   test('should return all todo items', async () => {
     const res = await jsonPlaceholder.todos.findAll();
-    expect(res.status).toBe(200);
     
+    expect(res.status).toBe(200);
+    expect(res.data.length).toBeGreaterThan(1);
   });
   
   test('should return a specific todos by Id ', async ()=>{
@@ -47,7 +48,9 @@ describe('JsonPlaceholder', () => {
 
   test('should return all posts', async () => {
     const res = await jsonPlaceholder.posts.findAll();
+
     expect(res.status).toBe(200);
+    expect(res.data.length).toBeGreaterThan(1);
   });
 
   test('should return a post by Id ', async ()=>{
@@ -66,6 +69,7 @@ describe('JsonPlaceholder', () => {
 
   test('should return a not-found error when searching for a post by an id that does not exist', async () => {
     const res = await jsonPlaceholder.todos.getById(-100000);
+    
     expect(res.status).toBe(404);
   });
   
@@ -78,15 +82,14 @@ describe('JsonPlaceholder', () => {
     }
 
     const res = await jsonPlaceholder.posts.create(newPost);
+
     expect(res.status).toBe(201);
   });
-
-
-
 
   test('should return all users', async () => {
     const res = await jsonPlaceholder.users.findAll();
     expect(res.status).toBe(200);
+    expect(res.data.length).toBeGreaterThan(1);
   });
 
   test('should return a user by id ', async ()=>{
@@ -96,85 +99,61 @@ describe('JsonPlaceholder', () => {
       username: "Kamren",
       email: "Lucio_Hettinger@annie.ca",
       address: {
-      street: "Skiles Walks",
-      suite: "Suite 351",
-      city: "Roscoeview",
-      zipcode: "33263",
-      geo: {
-        lat: "-31.8129",
-        lng: "62.5342",
-        }
+        street: "Skiles Walks",
+        suite: "Suite 351",
+        city: "Roscoeview",
+        zipcode: "33263",
+          geo: {
+            lat: "-31.8129",
+            lng: "62.5342",
+            }
       },
       phone: "(254)954-1289",
       website: "demarco.info",
       company: {
-      name: "Keebler LLC",
-      catchPhrase: "User-centric fault-tolerant solution",
-      bs: "revolutionize end-to-end systems"
+        name: "Keebler LLC",
+        catchPhrase: "User-centric fault-tolerant solution",
+        bs: "revolutionize end-to-end systems"
       }
     }
 
-    const res = await jsonPlaceholder.posts.getById(5);
+    const res = await jsonPlaceholder.users.getById(5);
 
     expect(res.status).toBe(200);
     expect(res.data).toMatchObject(expectedUser);
   });
 
-  test('should return a not-found error when searching for a post by an id that does not exist', async () => {
-    const res = await jsonPlaceholder.todos.getById(-100000);
+  test('should return a not-found error when searching for a user by an id that does not exist', async () => {
+    const res = await jsonPlaceholder.users.getById(-100000);
     expect(res.status).toBe(404);
   });
   
-  test('should return a success response when creating a new post', async () => {
-    const newPost: Post = {
-      userId: 10,
-      id: 978,
-      title: "This is a Title!",
-      body: "This is the body!",
-    }
-
-    const res = await jsonPlaceholder.posts.create(newPost);
-    expect(res.status).toBe(201);
-  });
-
-
-
-
-
-  
-  test('users', async()=>{
-    const user:User = {
-      username:"test user",
-      name: "name namington",
-      email:"mail@mail.com",
+  test('should return a success response when creating a new user', async () => {
+    const newUser: User = {
+      id: 97,
+      name: "Ian Scott",
+      username: "Uber_Scott",
+      email: "IanIsDaBest@CoolIan.net",
       address: {
-        street:"fake street",
-        city:"metropolis",
-        zipcode:"11111"
+        street: "Apple St",
+        suite: "Suite 333",
+        city: "Nagasaki",
+        zipcode: "716-239",
+          geo: {
+            lat: "65.9817",
+            lng: "27.0012",
+            }
       },
-      geo: {
-        lat: "111111",
-        lng: "1111111",
-      },
-      phone:"1234567890",
-      website: "www.web.com",
+      phone: "(123)456-7890",
+      website: "IanIsCool.io",
       company: {
-        name: "Coolcompany, Inc",
-        catchPhrase: "The coolest company",
-        bs: "test bs"
+        name: "Green Is Best",
+        catchPhrase: "Waaagh!",
+        bs: "What is bs?"
       }
     }
-    const userById = await jsonPlaceholder.getUserById(1)
-    const allUsers = await jsonPlaceholder.getAllUsers()
-    const findUsers = await jsonPlaceholder.findUsers({name: "Ervin Howell"})
-    const createdUser = await jsonPlaceholder.users.create(user)
-    expect(userById.status).toBe(200)
-    expect(userById.data.id).toBe(1)
-    expect(allUsers.status).toBe(200)
-    expect(allUsers.data.length).toBeGreaterThan(1)
-    expect(findUsers.data[0].name).toBe("Ervin Howell")
-    expect(createdUser.data).toMatchObject(user)
-  
-  });
 
+    const res = await jsonPlaceholder.posts.create(newUser);
+    expect(res.status).toBe(201);
+  });
 });
