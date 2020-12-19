@@ -8,6 +8,12 @@ describe('JsonPlaceholder', () => {
 
   const jsonPlaceholder = new JSONPlaceholder()
   
+  test('should find nested path', async ()=>{
+    const res = await jsonPlaceholder.todos.findNested('posts', 1, 'comments')()
+    expect(res.status).toBe(200)
+    expect(res.data.length).toBeGreaterThanOrEqual(1);
+  })
+
   test('should return all todo items', async () => {
     const res = await jsonPlaceholder.todos.findAll();
     
