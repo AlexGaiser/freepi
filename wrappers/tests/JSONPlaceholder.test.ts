@@ -4,6 +4,7 @@ import { Post } from "../JSONPlaceholder/models/Post";
 import { Todo } from "../JSONPlaceholder/models/Todo";
 import { User } from "../JSONPlaceholder/models/User";
 import { Photo } from "../JsonPlaceholder/models/Photo";
+import { Comment } from "../JSONPlaceholder/models/Comment";
 
 describe('JsonPlaceholder', () => {
 
@@ -158,7 +159,6 @@ describe('JsonPlaceholder', () => {
     expect(res.status).toBe(201);
   });
 
-
   test('should return all photo items', async () => {
     const res = await jsonPlaceholder.photos.findAll();
     
@@ -196,6 +196,46 @@ describe('JsonPlaceholder', () => {
     }
 
     const res = await jsonPlaceholder.photos.create(newPhoto);
+    expect(res.status).toBe(201);
+  });
+
+  test('should return all comment objects', async () => {
+    const res = await jsonPlaceholder.comments.findAll();
+    
+    expect(res.status).toBe(200);
+    expect(res.data.length).toBeGreaterThan(1);
+  });
+  
+  test('should return a specific comment object by Id ', async ()=>{
+    const expectedComment:Comment = {
+      postId: 79,
+      id: 393,
+      name: "illo quis nostrum accusantium architecto et aliquam ratione",
+      email: "Donna@frederik.com",
+      body: "et quia explicabo\nut hic commodi quas provident aliquam nihil\nvitae in voluptatem commodi\nvero velit optio omnis accusamus corrupti voluptatem"
+    }
+
+    const res = await jsonPlaceholder.comments.getById(393);
+
+    expect(res.status).toBe(200);
+    expect(res.data).toMatchObject(expectedComment);
+  });
+
+  test('should return a not-found error when searching for a comment by an id that does not exist', async () => {
+    const res = await jsonPlaceholder.comments.getById(-100000);
+    expect(res.status).toBe(404);
+  });
+  
+  test('should return a success response when creating a new comment object', async () => {
+    const newComment:Comment = {
+      postId: 100000,
+      id: 9999,
+      name: "Gary The Snail",
+      email: "Gary@snailsRule.net",
+      body: "Snails are slimey and so gross\n they can not ride upon a boat"
+    }
+
+    const res = await jsonPlaceholder.comments.create(newComment);
     expect(res.status).toBe(201);
   });
 
