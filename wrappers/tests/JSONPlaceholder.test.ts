@@ -10,6 +10,8 @@ import { Album } from "../JSONPlaceholder/models/Album";
 describe('JsonPlaceholder', () => {
 
   const jsonPlaceholder = new JSONPlaceholder()
+
+  // --------Todo Tests Start Here--------
   
   test('should return all todo items', async () => {
     const res = await jsonPlaceholder.todos.findAll();
@@ -48,6 +50,8 @@ describe('JsonPlaceholder', () => {
     const res = await jsonPlaceholder.todos.create(newTodo);
     expect(res.status).toBe(201);
   });
+
+  // --------Post Tests Start Here--------
 
   test('should return all posts', async () => {
     const res = await jsonPlaceholder.posts.findAll();
@@ -88,6 +92,8 @@ describe('JsonPlaceholder', () => {
 
     expect(res.status).toBe(201);
   });
+
+  // --------User Tests Start Here--------
 
   test('should return all users', async () => {
     const res = await jsonPlaceholder.users.findAll();
@@ -160,6 +166,8 @@ describe('JsonPlaceholder', () => {
     expect(res.status).toBe(201);
   });
 
+  // --------Photo Tests Start Here--------
+
   test('should return all photo items', async () => {
     const res = await jsonPlaceholder.photos.findAll();
     
@@ -199,6 +207,8 @@ describe('JsonPlaceholder', () => {
     const res = await jsonPlaceholder.photos.create(newPhoto);
     expect(res.status).toBe(201);
   });
+
+  // --------Comment Tests Start Here--------
 
   test('should return all comment objects', async () => {
     const res = await jsonPlaceholder.comments.findAll();
@@ -240,7 +250,7 @@ describe('JsonPlaceholder', () => {
     expect(res.status).toBe(201);
   });
 
-  // Album Tests Start Here
+  // --------Album Tests Start Here--------
 
   test('should return all album objects', async () => {
     const res = await jsonPlaceholder.albums.findAll();
