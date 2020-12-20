@@ -8,6 +8,7 @@ import { users } from "./services/users";
 import { posts } from "./services/posts";
 import { photos } from "./services/photos";
 import { comments } from "./services/comments";
+import { albums } from "./services/albums";
 
 const {get, post} = requests;
 class JSONPlaceholder {
@@ -23,6 +24,7 @@ class JSONPlaceholder {
   public posts = posts({url:this.getBaseURL()})
   public photos = photos({url:this.getBaseURL()})
   public comments = comments({url:this.getBaseURL()})
+  public albums = albums({url:this.getBaseURL()})
 
   public getBaseURL ():string{
     return this.baseURL;
