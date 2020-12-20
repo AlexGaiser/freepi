@@ -5,6 +5,7 @@ import { Todo } from "../JSONPlaceholder/models/Todo";
 import { User } from "../JSONPlaceholder/models/User";
 import { Photo } from "../JsonPlaceholder/models/Photo";
 import { Comment } from "../JSONPlaceholder/models/Comment";
+import { Album } from "../JSONPlaceholder/models/Album";
 
 describe('JsonPlaceholder', () => {
 
@@ -236,6 +237,44 @@ describe('JsonPlaceholder', () => {
     }
 
     const res = await jsonPlaceholder.comments.create(newComment);
+    expect(res.status).toBe(201);
+  });
+
+  // Album Tests Start Here
+
+  test('should return all album objects', async () => {
+    const res = await jsonPlaceholder.albums.findAll();
+    
+    expect(res.status).toBe(200);
+    expect(res.data.length).toBeGreaterThan(1);
+  });
+  
+  test('should return a specific album object by Id ', async ()=>{
+    const expectedAlbum:Album = {
+      userId: 10,
+      id: 100,
+      title: "enim repellat iste"
+    }
+
+    const res = await jsonPlaceholder.albums.getById(100);
+
+    expect(res.status).toBe(200);
+    expect(res.data).toMatchObject(expectedAlbum);
+  });
+
+  test('should return a not-found error when searching for an album by an id that does not exist', async () => {
+    const res = await jsonPlaceholder.albums.getById(-100000);
+    expect(res.status).toBe(404);
+  });
+  
+  test('should return a success response when creating a new album object', async () => {
+    const newAlbum:Album = {
+      userId: 923,
+      id: 87623,
+      title: "Kyoto 2012"
+    }
+
+    const res = await jsonPlaceholder.comments.create(newAlbum);
     expect(res.status).toBe(201);
   });
 
