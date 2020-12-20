@@ -3,6 +3,7 @@ import JSONPlaceholder from "../JSONPlaceholder/JSONPlaceholder";
 import { Post } from "../JSONPlaceholder/models/Post";
 import { Todo } from "../JSONPlaceholder/models/Todo";
 import { User } from "../JSONPlaceholder/models/User";
+import { Photo } from "../JsonPlaceholder/models/Photo";
 
 describe('JsonPlaceholder', () => {
 
@@ -156,4 +157,46 @@ describe('JsonPlaceholder', () => {
     const res = await jsonPlaceholder.posts.create(newUser);
     expect(res.status).toBe(201);
   });
+
+
+  test('should return all photo items', async () => {
+    const res = await jsonPlaceholder.photos.findAll();
+    
+    expect(res.status).toBe(200);
+    expect(res.data.length).toBeGreaterThan(1);
+  });
+  
+  test('should return a specific photo object by Id ', async ()=>{
+    const expectedPhoto:Photo = {
+      albumId: 1,
+      id: 3,
+      title: "officia porro iure quia iusto qui ipsa ut modi",
+      url: "https://via.placeholder.com/600/24f355",
+      thumbnailUrl: "https://via.placeholder.com/150/24f355"
+    }
+
+    const res = await jsonPlaceholder.photos.getById(3);
+
+    expect(res.status).toBe(200);
+    expect(res.data).toMatchObject(expectedPhoto);
+  });
+
+  test('should return a not-found error when searching for a photo by an id that does not exist', async () => {
+    const res = await jsonPlaceholder.photos.getById(-100000);
+    expect(res.status).toBe(404);
+  });
+  
+  test('should return a success response when creating a new photo object', async () => {
+    const newPhoto:Photo = {
+      albumId: 98,
+      id: 67,
+      title: "The Best Darn Album You'll Ever See!",
+      url: "URL Goes Here!",
+      thumbnailUrl: "URL Thumbnail Here!"
+    }
+
+    const res = await jsonPlaceholder.photos.create(newPhoto);
+    expect(res.status).toBe(201);
+  });
+
 });
