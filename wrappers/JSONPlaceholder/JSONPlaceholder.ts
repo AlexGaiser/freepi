@@ -6,6 +6,7 @@ import { User } from "./models/User";
 import { todos } from "./services/todos";
 import { users } from "./services/users";
 import { posts } from "./services/posts";
+import { photos } from "./services/photos";
 
 const {get, post} = requests;
 class JSONPlaceholder {
@@ -19,6 +20,7 @@ class JSONPlaceholder {
   public todos = todos({url:this.getBaseURL()})
   public users = users({url:this.getBaseURL()})
   public posts = posts({url:this.getBaseURL()})
+  public photos = photos({url:this.getBaseURL()})
 
   public getBaseURL ():string{
     return this.baseURL;
