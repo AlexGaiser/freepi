@@ -1,5 +1,6 @@
 import { Post } from "../../wrappers/JSONPlaceholder/models/Post";
 import { Todo } from "../../wrappers/JSONPlaceholder/models/Todo";
+import RequestBuilder from "../req.builder";
 import requests, { buildRequest, request, setReqMethod, setReqUrl } from "../requests";
 
 test('get request', async () => {
@@ -27,5 +28,14 @@ test('test request builder', async ()=> {
   ({})
 
   const res = await request(config)
+  expect(res.status).toBe(200)
+})
+
+test('test request builder', async ()=>{
+  const req = new RequestBuilder('https://jsonplaceholder.typicode.com')
+  const res = await req.extendURL('/posts')
+     .setReqMethod('get')
+     .buildRequest()
+     .sendRequest()
   expect(res.status).toBe(200)
 })
