@@ -11,7 +11,6 @@ export const findNested = <T>(baseURL: string) => (...urlSegments)=>(
   params?
 ) => {
   const pathString = urlSegments.join('/');
-  console.log(`${baseURL}${pathString}`)
   return get<T[]>(`${baseURL}/${pathString}`, params)
 };
 
@@ -26,9 +25,6 @@ export const find = <T>(path: string) => (baseURL: string) => (params) => {
 export const create = <T>(path: string) => (baseURL: string) => (data) => {
   return post<T>(`${baseURL}${path}`, { data });
 };
-
-
-
 
 export const getBaseFunctions = <T>(path: string) => ({
   url,
