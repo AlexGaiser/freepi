@@ -1,8 +1,8 @@
-import { Todo } from "../models/Todo"
-import { find, findAll, getById, getBaseFunctions} from "./base.req"
+import { Todo } from '../models/Todo';
+import { getBaseFunctions } from './base.req';
 
-export const todos =  (baseURL) => {
+export const todos = (baseURL) => {
   return {
-    ...getBaseFunctions<Todo>('/todos')(baseURL)
-  }
-}
+    ...getBaseFunctions<Todo>('/todos')(baseURL),
+  };
+};

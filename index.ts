@@ -1,10 +1,8 @@
-import JSONPlaceholder from "./wrappers/JSONPlaceholder/JSONPlaceholder"
+import JSONPlaceholder from './wrappers/JSONPlaceholder/JSONPlaceholder';
 
-export {
-  JSONPlaceholder
-}
+export { JSONPlaceholder };
 const freepi = {
-  JSONPlaceholder
-}
+  JSONPlaceholder,
+};
 
 export default freepi;
