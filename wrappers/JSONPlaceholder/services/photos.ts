@@ -3,6 +3,6 @@ import { getBaseFunctions } from '../services/base.req';
 
 export const photos = (baseURL) => {
   return {
-    ...getBaseFunctions<Photo>('/photos')(baseURL)
-  }
-}
+    ...getBaseFunctions<Photo>('/photos')(baseURL),
+  };
+};

@@ -1,5 +1,2 @@
-export const pipe = (...args) => (x) => args.reduce((v, f) => f(v), x);
-
-
-
-
+export const pipe = (...args) => (x) =>
+  args.reduce((v, f) => f(v), x);
