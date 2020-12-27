@@ -1,8 +1,10 @@
 import { Post } from "../models/Post"
-import { find, findAll, getById, getBaseFunctions} from "./base.req"
+import { find, findAll, getById, getBaseFunctions, createNested} from "./base.req"
 
 export const posts =  (baseURL) => {
+  const nestedPaths: string[] = ["/comments"];
   return {
-    ...getBaseFunctions<Post>('/posts')(baseURL)
+    ...getBaseFunctions<Post>('/posts')(baseURL),
+    createComment: createNested<Post>('/posts')(baseURL)(nestedPaths[0])
   }
 }

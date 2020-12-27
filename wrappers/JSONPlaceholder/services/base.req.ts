@@ -22,11 +22,9 @@ export const create = <T>(path:string)=> (baseURL:string)=> (data) => {
   return post<T>(`${baseURL}${path}`, {data})
 }
 
-export const createNested = <T>(path:string) => (baseURL: string) => (nestedPaths:string[], params) => (data)  => {
-  const pathString = path + nestedPaths;
-  return post<T>('${baseURL}${pathString}', {data});
+export const createNested = <T>(path:string) => (baseURL: string) => (nestedPath: string) => (id:number | string, data)  => {
+  return post<T>('${baseURL}${pathString}/${id}${nestedPath}', {data});
 }
-
 
 export const getBaseFunctions= <T>(path:string) =>({url}:AxiosRequestConfig) =>(nestedPaths:string[], params) => {
   return {
@@ -34,6 +32,5 @@ export const getBaseFunctions= <T>(path:string) =>({url}:AxiosRequestConfig) =>(
     findAll: findAll<T>(path)(url),
     getById: getById<T>(path)(url),
     create: create<T>(path)(url),
-    createNested: createNested<T>(path)(url)(nestedPaths, params),
   }
 }
