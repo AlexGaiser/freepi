@@ -93,6 +93,18 @@ describe('JsonPlaceholder', () => {
     expect(res.status).toBe(201);
   });
 
+  test('should return a success response when creating a new comment under a specific post', async () => {
+    const postId = 3;
+    const newComment: Comment = {
+      name: "You're Wrong! I'm Right!",
+      email: "I_Know_All@realinternetperson.com",
+      body: "Nope, my logic is infallible and I am Right!"
+    }
+    const res = await jsonPlaceholder.posts.createComment(postId, newComment);
+
+    expect(res.status).toBe(201);
+  });
+
   // --------User Tests Start Here--------
 
   test('should return all users', async () => {
