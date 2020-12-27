@@ -19,3 +19,7 @@ Simply install the library and import the API wrapper you wish to use.
 
 node.js  
 browser  
+
+### Linting and Formatting Rules
+
+Uses Eslint and Prettier. Contributors should use Prettier to format their code before submitting. Linting and formatting rules can be found in the respective .eslintrc.json and .prettierrc files.

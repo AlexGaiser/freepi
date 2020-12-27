@@ -1,6 +1,6 @@
 import commonjs from 'rollup-plugin-commonjs';
 import resolve from 'rollup-plugin-node-resolve';
-import typescript from 'rollup-plugin-typescript2'
+import typescript from 'rollup-plugin-typescript2';
 
 export default {
   input: 'index.ts',
@@ -8,12 +8,12 @@ export default {
     {
       file: 'dist/cjs.js',
       format: 'cjs',
-      exports: 'named'
+      exports: 'named',
     },
     {
       file: 'dist/index.js',
       format: 'es',
-      exports: 'named'
+      exports: 'named',
     },
     {
       file: 'dist/umd.js',
@@ -21,8 +21,8 @@ export default {
       name: 'umd',
       exports: 'named',
       globals: {
-        'axios':'axios'
-      }
+        axios: 'axios',
+      },
     },
     {
       file: 'dist/iife.js',
@@ -30,17 +30,10 @@ export default {
       name: 'iife',
       exports: 'named',
       globals: {
-        'axios':'axios'
-      }
-    }
+        axios: 'axios',
+      },
+    },
   ],
-  plugins: [
-    resolve(),
-    commonjs(),
-    typescript()
-  ],
-  external: [
-    'lodash/random',
-    'axios'
-  ]
+  plugins: [resolve(), commonjs(), typescript()],
+  external: ['lodash/random', 'axios'],
 };

@@ -3,6 +3,6 @@ import { getBaseFunctions } from '../services/base.req';
 
 export const albums = (baseURL) => {
   return {
-    ...getBaseFunctions<Album>('/Albums')(baseURL)
-  }
-}
+    ...getBaseFunctions<Album>('/Albums')(baseURL),
+  };
+};
