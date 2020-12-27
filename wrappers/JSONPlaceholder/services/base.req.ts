@@ -6,8 +6,13 @@ export const getById = <T>(path:string) => (baseURL:string) => (id:number | stri
   return get<T>(`${baseURL}${path}/${id}`)
 }
 
-export const findNested = <T>(path:string) => (baseURL:string)=> (nestedPaths:string[], params) =>{
-  const pathString = nestedPaths
+export const findNested = <T>(path:string) => (baseURL:string) => (nestedPaths:string[], params) =>{
+  const pathString = nestedPaths;
+}
+
+export const createNested = <T>(path:string) => (baseURL: string) => (nestedPaths:string[], params) => (data)  => {
+  const pathString = path + nestedPaths;
+  return post<T>('${baseURL}${pathString}', {data});
 }
 
 
