@@ -26,7 +26,7 @@ export const createNested = <T>(path:string) => (baseURL: string) => (nestedPath
   return post<T>('${baseURL}${pathString}/${id}${nestedPath}', {data});
 }
 
-export const getBaseFunctions= <T>(path:string) =>({url}:AxiosRequestConfig) =>(nestedPaths:string[], params) => {
+export const getBaseFunctions= <T>(path:string) =>({url}:AxiosRequestConfig) => {
   return {
     find:find<T>(path)(url),
     findAll: findAll<T>(path)(url),
