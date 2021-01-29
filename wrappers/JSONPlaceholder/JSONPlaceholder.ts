@@ -12,7 +12,7 @@ import { albums } from './services/albums';
 
 const { get, post } = requests;
 class JSONPlaceholder {
-  private baseURL: string = 'https://jsonplaceholder.typicode.com';
+  private baseURL = 'https://jsonplaceholder.typicode.com';
 
   constructor() {
     // this.baseURL = 'https://jsonplaceholder.typicode.com'
