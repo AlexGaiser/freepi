@@ -4,3 +4,4 @@ node_modules/
 *.swp
 dist/
 coverage/
+.DS_Store
