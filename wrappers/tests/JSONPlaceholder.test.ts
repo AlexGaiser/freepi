@@ -193,7 +193,7 @@ describe('JsonPlaceholder', () => {
     const userId = 47;
     const newAlbum:Album = {
       userId: userId,
-      title: "The cutest photo of the best little Goblin Slayer around!",
+      title: "James' Wedding Photos India 2019",
     }
     const res = await jsonPlaceholder.users.createAlbum(userId, newAlbum);
 
@@ -208,6 +208,18 @@ describe('JsonPlaceholder', () => {
       completed: false,
     }
     const res = await jsonPlaceholder.users.createAlbum(userId, newTodo);
+
+    expect(res.status).toBe(201);
+  });
+
+  test('should return a success response when creating a new post under a specific user', async () => {
+    const userId = 47;
+    const newPost:Post = {
+      userId: 13,
+      title: "Diamond Hands To The Moon!",
+      body: "Buy in the dip! Let's take this GME Stock TO THE MOON!!!"
+    }
+    const res = await jsonPlaceholder.users.createAlbum(userId, newPost);
 
     expect(res.status).toBe(201);
   });
