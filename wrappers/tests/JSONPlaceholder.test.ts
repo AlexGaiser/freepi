@@ -192,10 +192,22 @@ describe('JsonPlaceholder', () => {
   test('should return a success response when creating a new album under a specific user', async () => {
     const userId = 47;
     const newAlbum:Album = {
-      userId: 13,
+      userId: userId,
       title: "The cutest photo of the best little Goblin Slayer around!",
     }
     const res = await jsonPlaceholder.users.createAlbum(userId, newAlbum);
+
+    expect(res.status).toBe(201);
+  });
+
+  test('should return a success response when creating a new todo under a specific user', async () => {
+    const userId = 32;
+    const newTodo:Todo = {
+      userId: userId,
+      title: "Paint WH40K Imperial Guard Miniatures",
+      completed: false,
+    }
+    const res = await jsonPlaceholder.users.createAlbum(userId, newTodo);
 
     expect(res.status).toBe(201);
   });
