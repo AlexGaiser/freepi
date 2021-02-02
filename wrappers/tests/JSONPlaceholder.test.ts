@@ -189,6 +189,17 @@ describe('JsonPlaceholder', () => {
     expect(res.status).toBe(201);
   });
 
+  test('should return a success response when creating a new album under a specific user', async () => {
+    const userId = 47;
+    const newAlbum:Album = {
+      userId: 13,
+      title: "The cutest photo of the best little Goblin Slayer around!",
+    }
+    const res = await jsonPlaceholder.users.createAlbum(userId, newAlbum);
+
+    expect(res.status).toBe(201);
+  });
+
   // --------Photo Tests Start Here--------
 
   test('should return all photo items', async () => {
