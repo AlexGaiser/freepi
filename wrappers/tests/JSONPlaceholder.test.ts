@@ -313,4 +313,19 @@ describe('JsonPlaceholder', () => {
     const res = await jsonPlaceholder.comments.create(newAlbum);
     expect(res.status).toBe(201);
   });
+
+  test('should return a success response when creating a new photo under a specific album', async () => {
+    const albumId = 47;
+    const newPhoto:Photo = {
+      albumId: 47,
+      id: 392,
+      title: "The cutest photo of the best little Goblin Slayer around!",
+      url: "URL Goes Here!",
+      thumbnailUrl: "URL Thumbnail Here!"
+    }
+    const res = await jsonPlaceholder.albums.createPhoto(albumId, newPhoto);
+
+    expect(res.status).toBe(201);
+  });
+
 });
