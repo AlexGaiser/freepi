@@ -33,6 +33,10 @@ export const create = <T>(path: string) => (baseURL: string) => (
   return post<T>(`${baseURL}${path}`, { data });
 };
 
+export const createNested = <T>(path:string) => (baseURL:string) => (nestedPath:string) => (id:number | string, data)  => {
+  return post<T>(`${baseURL}${path}/${id}${nestedPath}`, {data});
+}
+
 export const getBaseFunctions = <T>(path: string) => ({
   url,
 }: AxiosRequestConfig) => {
