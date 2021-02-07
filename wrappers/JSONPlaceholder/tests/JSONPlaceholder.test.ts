@@ -1,11 +1,10 @@
-import { post } from '../../services/requests';
-import JSONPlaceholder from '../JSONPlaceholder/JSONPlaceholder';
-import { Post } from '../JSONPlaceholder/models/Post';
-import { Todo } from '../JSONPlaceholder/models/Todo';
-import { User } from '../JSONPlaceholder/models/User';
-import { Photo } from '../JsonPlaceholder/models/Photo';
-import { Comment } from '../JSONPlaceholder/models/Comment';
-import { Album } from '../JSONPlaceholder/models/Album';
+import JSONPlaceholder from '../JSONPlaceholder';
+import { Post } from '../models/Post';
+import { Todo } from '../models/Todo';
+import { User } from '../models/User';
+import { Photo } from '../models/Photo';
+import { Comment } from '../models/Comment';
+import { Album } from '../models/Album';
 
 describe('JsonPlaceholder', () => {
   const jsonPlaceholder = new JSONPlaceholder();
@@ -108,10 +107,13 @@ describe('JsonPlaceholder', () => {
     const newComment: Comment = {
       postId: postId,
       name: "You're Wrong! I'm Right!",
-      email: "I_Know_All@realinternetperson.com",
-      body: "Nope, my logic is infallible and I am Right!"
-    }
-    const res = await jsonPlaceholder.posts.createComment(postId, newComment);
+      email: 'I_Know_All@realinternetperson.com',
+      body: 'Nope, my logic is infallible and I am Right!',
+    };
+    const res = await jsonPlaceholder.posts.createComment(
+      postId,
+      newComment,
+    );
 
     expect(res.status).toBe(201);
   });
@@ -191,35 +193,45 @@ describe('JsonPlaceholder', () => {
 
   test('should return a success response when creating a new album under a specific user', async () => {
     const userId = 47;
-    const newAlbum:Album = {
+    const newAlbum: Album = {
       userId: userId,
       title: "James' Wedding Photos India 2019",
-    }
-    const res = await jsonPlaceholder.users.createAlbum(userId, newAlbum);
+    };
+    const res = await jsonPlaceholder.users.createAlbum(
+      userId,
+      newAlbum,
+    );
 
     expect(res.status).toBe(201);
   });
 
   test('should return a success response when creating a new todo under a specific user', async () => {
     const userId = 32;
-    const newTodo:Todo = {
+    const newTodo: Todo = {
       userId: userId,
-      title: "Paint WH40K Imperial Guard Miniatures",
+      title: 'Paint WH40K Imperial Guard Miniatures',
       completed: false,
-    }
-    const res = await jsonPlaceholder.users.createAlbum(userId, newTodo);
+    };
+    const res = await jsonPlaceholder.users.createAlbum(
+      userId,
+      newTodo,
+    );
 
     expect(res.status).toBe(201);
   });
 
   test('should return a success response when creating a new post under a specific user', async () => {
     const userId = 47;
-    const newPost:Post = {
+    const newPost: Post = {
       userId: 13,
-      title: "Diamond Hands To The Moon!",
-      body: "Buy in the dip! Let's take this GME Stock TO THE MOON!!!"
-    }
-    const res = await jsonPlaceholder.users.createAlbum(userId, newPost);
+      title: 'Diamond Hands To The Moon!',
+      body:
+        "Buy in the dip! Let's take this GME Stock TO THE MOON!!!",
+    };
+    const res = await jsonPlaceholder.users.createAlbum(
+      userId,
+      newPost,
+    );
 
     expect(res.status).toBe(201);
   });
@@ -351,16 +363,19 @@ describe('JsonPlaceholder', () => {
 
   test('should return a success response when creating a new photo under a specific album', async () => {
     const albumId = 47;
-    const newPhoto:Photo = {
+    const newPhoto: Photo = {
       albumId: 47,
       id: 392,
-      title: "The cutest photo of the best little Goblin Slayer around!",
-      url: "URL Goes Here!",
-      thumbnailUrl: "URL Thumbnail Here!"
-    }
-    const res = await jsonPlaceholder.albums.createPhoto(albumId, newPhoto);
+      title:
+        'The cutest photo of the best little Goblin Slayer around!',
+      url: 'URL Goes Here!',
+      thumbnailUrl: 'URL Thumbnail Here!',
+    };
+    const res = await jsonPlaceholder.albums.createPhoto(
+      albumId,
+      newPhoto,
+    );
 
     expect(res.status).toBe(201);
   });
-
 });

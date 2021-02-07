@@ -7,7 +7,6 @@ import { albums } from './services/albums';
 
 class JSONPlaceholder {
   private baseURL = 'https://jsonplaceholder.typicode.com';
-
   public todos = todos({ url: this.getBaseURL() });
   public users = users({ url: this.getBaseURL() });
   public posts = posts({ url: this.getBaseURL() });
