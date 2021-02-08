@@ -5,7 +5,7 @@ import { photos } from './services/photos';
 import { comments } from './services/comments';
 import { albums } from './services/albums';
 
-class JSONPlaceholder {
+export class JSONPlaceholder {
   private baseURL = 'https://jsonplaceholder.typicode.com';
   public todos = todos({ url: this.getBaseURL() });
   public users = users({ url: this.getBaseURL() });
@@ -18,4 +18,5 @@ class JSONPlaceholder {
     return this.baseURL;
   }
 }
+
 export default JSONPlaceholder;

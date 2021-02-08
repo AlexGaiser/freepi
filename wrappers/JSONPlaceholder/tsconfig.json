@@ -8,6 +8,6 @@
       "declaration": true,
       "moduleResolution": "node",
   },
-  "include": ["*.ts", "jest.config.js"],
+  "include": ["*.ts"],
   "exclude": ["*.test.ts"]
 }

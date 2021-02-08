@@ -1,10 +1,10 @@
-import JSONPlaceholder from '../JSONPlaceholder';
-import { Post } from '../models/Post';
-import { Todo } from '../models/Todo';
-import { User } from '../models/User';
-import { Photo } from '../models/Photo';
-import { Comment } from '../models/Comment';
-import { Album } from '../models/Album';
+import JSONPlaceholder from '../lib/JSONPlaceholder';
+import { Post } from '../lib/models/Post';
+import { Todo } from '../lib/models/Todo';
+import { User } from '../lib/models/User';
+import { Photo } from '../lib/models/Photo';
+import { Comment } from '../lib/models/Comment';
+import { Album } from '../lib/models/Album';
 
 describe('JsonPlaceholder', () => {
   const jsonPlaceholder = new JSONPlaceholder();
