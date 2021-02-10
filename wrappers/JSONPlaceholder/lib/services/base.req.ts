@@ -1,6 +1,7 @@
 import { AxiosRequestConfig } from 'axios';
-import { get, post } from '../../../services/requests';
 
+import { requests } from '@freepi/core';
+const { post, get } = requests;
 export const getById = <T>(path: string) => (baseURL: string) => (
   id: number | string,
 ) => {
@@ -33,9 +34,11 @@ export const create = <T>(path: string) => (baseURL: string) => (
   return post<T>(`${baseURL}${path}`, { data });
 };
 
-export const createNested = <T>(path:string) => (baseURL:string) => (nestedPath:string) => (id:number | string, data)  => {
-  return post<T>(`${baseURL}${path}/${id}${nestedPath}`, {data});
-}
+export const createNested = <T>(path: string) => (
+  baseURL: string,
+) => (nestedPath: string) => (id: number | string, data) => {
+  return post<T>(`${baseURL}${path}/${id}${nestedPath}`, { data });
+};
 
 export const getBaseFunctions = <T>(path: string) => ({
   url,

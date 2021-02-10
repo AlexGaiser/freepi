@@ -1,5 +1,5 @@
-import { Todo } from '../../wrappers/JSONPlaceholder/models/Todo';
-import requests from '../requests';
+import { Todo } from '../../wrappers/JSONPlaceholder/lib/models/Todo';
+import requests from '../lib/requests';
 
 test('get request', async () => {
   const response = await requests.get<Todo>(

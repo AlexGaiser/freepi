@@ -1,4 +1,4 @@
-import JSONPlaceholder from './wrappers/JSONPlaceholder/JSONPlaceholder';
+import JSONPlaceholder from './wrappers/JSONPlaceholder/lib/JSONPlaceholder';
 
 export { JSONPlaceholder };
 const freepi = {
