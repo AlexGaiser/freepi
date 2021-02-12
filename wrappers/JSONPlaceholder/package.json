@@ -18,7 +18,7 @@
     "/dist"
   ],
   "dependencies": {
-    "@freepi/core": "^1.0.10",
+    "@freepi/core": "^1.0.11",
     "@types/axios": "^0.14.0",
     "axios": "^0.21.0"
   },
