@@ -1,6 +1,6 @@
 {
   "name": "@freepi/core",
-  "version": "1.0.10",
+  "version": "1.0.11",
   "description": "Core Library for FreePI package",
   "main": "dist/cjs.js",
   "browser": "dist/index.js",
