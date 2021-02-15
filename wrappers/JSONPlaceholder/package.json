@@ -1,6 +1,6 @@
 {
   "name": "@freepi/jsonplaceholder",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Core Library for FreePI package",
   "main": "dist/cjs.js",
   "browser": "dist/index.js",
