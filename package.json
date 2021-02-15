@@ -1,6 +1,6 @@
 {
   "name": "freepi",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Wrapper for various free apis",
   "main": "dist/cjs.js",
   "browser": "dist/index.js",
