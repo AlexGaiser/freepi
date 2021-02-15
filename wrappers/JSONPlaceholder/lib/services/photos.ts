@@ -1,8 +1,9 @@
+import { AxiosRequestConfig } from 'axios';
 import { Photo } from '../models/Photo';
 import { getBaseFunctions } from '../services/base.req';
 
-export const photos = (baseURL) => {
+export const photos = (config: AxiosRequestConfig) => {
   return {
-    ...getBaseFunctions<Photo>('/photos')(baseURL),
+    ...getBaseFunctions<Photo>('/photos')(config),
   };
 };

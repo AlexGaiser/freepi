@@ -17,7 +17,7 @@ export const getById = <T>(path: string) => (baseURL: string) => (
 };
 
 export const findNested = <T>(baseURL: string) => (
-  ...urlSegments
+  ...urlSegments: any
 ) => (params?: IParam<T>) => {
   const pathString = urlSegments.join('/');
   console.log(`${baseURL}${pathString}`);
@@ -37,14 +37,14 @@ export const find = <T>(path: string) => (baseURL: string) => (
 };
 
 export const create = <T>(path: string) => (baseURL: string) => (
-  data,
+  data: T,
 ) => {
   return post<T>(`${baseURL}${path}`, { data });
 };
 
 export const createNested = <T>(path: string) => (
   baseURL: string,
-) => (nestedPath: string) => (id: number | string, data) => {
+) => (nestedPath: string) => (id: number | string, data: T) => {
   return post<T>(`${baseURL}${path}/${id}${nestedPath}`, { data });
 };
 

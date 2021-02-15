@@ -1,13 +1,13 @@
 {
   "compilerOptions": {
       "module": "ESNext",
-      "noImplicitAny": false,
+      "noImplicitAny": true,
       "removeComments": true,
       "preserveConstEnums": true,
       "sourceMap": true,
       "declaration": true,
       "moduleResolution": "node",
   },
-  "include": ["*.ts"],
+  "include": ["lib/*.ts"],
   "exclude": ["*.test.ts"]
 }

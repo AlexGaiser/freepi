@@ -1,10 +1,14 @@
-import { Post } from "../models/Post"
-import { getBaseFunctions, createNested} from "./base.req"
+import { AxiosRequestConfig } from 'axios';
+import { Comment } from '../models/Comment';
+import { Post } from '../models/Post';
+import { getBaseFunctions, createNested } from './base.req';
 
-export const posts =  (baseURL) => {
-  const nestedPaths: string[] = ["/comments"];
+export const posts = (config: AxiosRequestConfig) => {
+  const nestedPaths: string[] = ['/comments'];
   return {
-    ...getBaseFunctions<Post>('/posts')(baseURL),
-    createComment: createNested<Post>('/posts')(baseURL.url)(nestedPaths[0]),
-  }
-}
+    ...getBaseFunctions<Post>('/posts')(config),
+    createComment: createNested<Comment>('/posts')(config.url)(
+      nestedPaths[0],
+    ),
+  };
+};
