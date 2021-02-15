@@ -2,6 +2,14 @@ import { AxiosRequestConfig } from 'axios';
 
 import { requests } from '@freepi/core';
 const { post, get } = requests;
+
+// Makes all properties of any type passed to it optional
+// using for query parameters since should be dynamic and do not require all properties
+
+type IParam<Type> = {
+  [Property in keyof Type]?: Type[Property];
+};
+
 export const getById = <T>(path: string) => (baseURL: string) => (
   id: number | string,
 ) => {
@@ -10,7 +18,7 @@ export const getById = <T>(path: string) => (baseURL: string) => (
 
 export const findNested = <T>(baseURL: string) => (
   ...urlSegments
-) => (params?) => {
+) => (params?: IParam<T>) => {
   const pathString = urlSegments.join('/');
   console.log(`${baseURL}${pathString}`);
   return get<T[]>(`${baseURL}/${pathString}`, params);
@@ -23,7 +31,7 @@ export const findAll = <T>(path: string) => (
 };
 
 export const find = <T>(path: string) => (baseURL: string) => (
-  params,
+  params: IParam<T>,
 ) => {
   return get<T[]>(`${baseURL}${path}`, { params });
 };
