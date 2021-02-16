@@ -1,4 +1,4 @@
-import { AxiosRequestConfig } from 'axios';
+import { AxiosPromise, AxiosRequestConfig } from 'axios';
 
 import { requests } from '@freepi/core';
 const { post, get } = requests;
@@ -12,13 +12,13 @@ type IParam<Type> = {
 
 export const getById = <T>(path: string) => (baseURL: string) => (
   id: number | string,
-) => {
+): AxiosPromise<T> => {
   return get<T>(`${baseURL}${path}/${id}`);
 };
 
 export const findNested = <T>(baseURL: string) => (
   ...urlSegments: any
-) => (params?: IParam<T>) => {
+) => (params?: IParam<T>): AxiosPromise<T[]> => {
   const pathString = urlSegments.join('/');
   console.log(`${baseURL}${pathString}`);
   return get<T[]>(`${baseURL}/${pathString}`, params);
@@ -26,25 +26,28 @@ export const findNested = <T>(baseURL: string) => (
 
 export const findAll = <T>(path: string) => (
   baseURL: string,
-) => () => {
+) => (): AxiosPromise<T[]> => {
   return get<T[]>(`${baseURL}${path}/`);
 };
 
 export const find = <T>(path: string) => (baseURL: string) => (
   params: IParam<T>,
-) => {
+): AxiosPromise<T[]> => {
   return get<T[]>(`${baseURL}${path}`, { params });
 };
 
 export const create = <T>(path: string) => (baseURL: string) => (
   data: T,
-) => {
+): AxiosPromise<T> => {
   return post<T>(`${baseURL}${path}`, { data });
 };
 
 export const createNested = <T>(path: string) => (
   baseURL: string,
-) => (nestedPath: string) => (id: number | string, data: T) => {
+) => (nestedPath: string) => (
+  id: number | string,
+  data: T,
+): AxiosPromise<T> => {
   return post<T>(`${baseURL}${path}/${id}${nestedPath}`, { data });
 };
 
