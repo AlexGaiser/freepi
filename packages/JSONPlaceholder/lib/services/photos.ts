@@ -1,5 +1,5 @@
 import { Photo } from '../models/Photo';
-import { getBaseFunctions } from '../services/base.req';
+import { getBaseFunctions } from './base.req';
 
 export const photos = (baseURL) => {
   return {
