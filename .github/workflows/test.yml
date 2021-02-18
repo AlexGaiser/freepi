@@ -34,5 +34,7 @@ jobs:
         run: |
           echo Add other actions to build,
           echo test, and deploy your project.
-      - name: Run Test Suite
+      - name: Install node modules
+        run: npm ci
+      - name: Run test suite
         run: npm run test
