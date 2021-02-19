@@ -197,7 +197,7 @@ describe('JsonPlaceholder', () => {
       },
     };
 
-    const res = await jsonPlaceholder.posts.create(newUser);
+    const res = await jsonPlaceholder.users.create(newUser);
     expect(res.status).toBe(201);
   });
 
@@ -222,7 +222,7 @@ describe('JsonPlaceholder', () => {
       title: 'Paint WH40K Imperial Guard Miniatures',
       completed: false,
     };
-    const res = await jsonPlaceholder.users.createAlbum(
+    const res = await jsonPlaceholder.users.createTodo(
       userId,
       newTodo,
     );
@@ -238,7 +238,7 @@ describe('JsonPlaceholder', () => {
       body:
         "Buy in the dip! Let's take this GME Stock TO THE MOON!!!",
     };
-    const res = await jsonPlaceholder.users.createAlbum(
+    const res = await jsonPlaceholder.users.createPost(
       userId,
       newPost,
     );
@@ -367,7 +367,7 @@ describe('JsonPlaceholder', () => {
       title: 'Kyoto 2012',
     };
 
-    const res = await jsonPlaceholder.comments.create(newAlbum);
+    const res = await jsonPlaceholder.albums.create(newAlbum);
     expect(res.status).toBe(201);
   });
 
