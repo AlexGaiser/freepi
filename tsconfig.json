@@ -1,12 +1,12 @@
 {
   "compilerOptions": {
-      "module": "ESNext",
-      "noImplicitAny": false,
-      "removeComments": true,
-      "preserveConstEnums": true,
-      "sourceMap": true,
-      "declaration": true,
-      "moduleResolution": "node",
+    "module": "ESNext",
+    "noImplicitAny": false,
+    "removeComments": true,
+    "preserveConstEnums": true,
+    "sourceMap": true,
+    "declaration": true,
+    "moduleResolution": "node"
   },
   "include": ["*.ts", "jest.config.js"],
   "exclude": ["*.test.ts"]

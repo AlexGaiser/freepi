@@ -10,7 +10,6 @@ This Library also serves as a way to document and collect various free apis whic
 
 Simply install the library and import the API wrapper you wish to use.
 
-
 ### APIs Supported:
 
 **JSONPlaceholder**
@@ -18,7 +17,7 @@ Simply install the library and import the API wrapper you wish to use.
 ### Platforms Supported:
 
 node.js  
-browser  
+browser
 
 ### Linting and Formatting Rules
 
