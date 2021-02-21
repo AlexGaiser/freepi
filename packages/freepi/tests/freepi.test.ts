@@ -1,5 +1,6 @@
 import { requests } from '@freepi/core';
 import { Todo } from '../../JSONPlaceholder/lib/models/Todo';
+import JSONPlaceholder from '@freepi/jsonplaceholder';
 
 test('get request', async () => {
   const response = await requests.get<Todo>(
@@ -23,5 +24,28 @@ test('post request', async () => {
   expect(response.data).toStrictEqual({
     id: 101,
     something: 'something',
+  });
+});
+
+describe('JsonPlaceholder', () => {
+  const jsonPlaceholder = new JSONPlaceholder();
+
+  // --------Todo Tests Start Here--------
+
+  test('should find nested path', async () => {
+    const res = await jsonPlaceholder.todos.findNested(
+      'posts',
+      1,
+      'comments',
+    )();
+    expect(res.status).toBe(200);
+    expect(res.data.length).toBeGreaterThanOrEqual(1);
+  });
+
+  test('should return all todo items', async () => {
+    const res = await jsonPlaceholder.todos.findAll();
+
+    expect(res.status).toBe(200);
+    expect(res.data.length).toBeGreaterThan(1);
   });
 });
