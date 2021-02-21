@@ -29,6 +29,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+      - name: Install Lerna
+        run: npm install -g lerna
       - name: Install node modules
         run: lerna bootstrap
       - name: Run test suite
