@@ -16,20 +16,21 @@ on:
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # This workflow contains a single job called "test"
-  lint:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v1
-      - run: npm -g i npm@next-7
-      - run: npm ci
-      - run: npm run ci:lint
+  # lint:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - uses: actions/checkout@v2
+  #     - uses: actions/setup-node@v1
+  #     - run: npm -g i npm@next-7
+  #     - run: npm ci
+  #     - run: npm run ci:lint
   test:
-    needs: [lint]
+    # needs: [lint]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - name: Install node modules
         run: npm ci
+
       - name: Run test suite
         run: npm run test
