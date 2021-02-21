@@ -33,5 +33,7 @@ jobs:
         run: npm ci --ignore-scripts
       - name: bootstrap
         run: npm run bootstrap
+      - name: link
+        run: npm run link
       - name: Run test suite
         run: npm run test
