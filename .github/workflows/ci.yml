@@ -30,6 +30,6 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Install node modules
-        run: npm ci
+        run: lerna bootstrap
       - name: Run test suite
         run: npm run test
