@@ -30,7 +30,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Install node modules
-        run: npm ci
-
+      - run: npm ci --ignore-scripts
+      - run: npm run bootstrap
       - name: Run test suite
         run: npm run test

@@ -8,6 +8,7 @@
   "scripts": {
     "test": "jest --coverage",
     "bootstrap": "lerna bootstrap",
+    "link": "lerna link",
     "build": "npm run test && rollup -c",
     "build-dev": "rollup -c",
     "format": "prettier . --write",
