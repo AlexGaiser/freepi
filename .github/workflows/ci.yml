@@ -29,8 +29,20 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+      - uses: actions/cache@v2
+        with:
+          path: |
+            node_modules
+            packages/*/node_modules
+            !packages/*/node_modules/@material
+          key: ${{ runner.os }}-lerna-${{ hashFiles('**/package-lock.json') }}
+      
       - name: Install node modules
-      - run: npm ci --ignore-scripts
-      - run: npm run bootstrap
+        run: npm ci --ignore-scripts
+      
+      - name: bootstrap
+        run: npm run bootstrap
+      - name: link
+        run: npm run link
       - name: Run test suite
         run: npm run test
