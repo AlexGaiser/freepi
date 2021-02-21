@@ -1,6 +1,6 @@
 {
   "name": "@freepi/jsonplaceholder",
-  "version": "1.1.2",
+  "version": "1.1.3",
   "description": "Core Library for FreePI package",
   "main": "dist/cjs.js",
   "browser": "dist/index.js",
@@ -18,7 +18,7 @@
     "/dist"
   ],
   "dependencies": {
-    "@freepi/core": "^1.1.1",
+    "@freepi/core": "^1.1.3",
     "@types/axios": "^0.14.0",
     "axios": "^0.21.0"
   }
