@@ -1,8 +1,6 @@
-# This is a basic workflow to help you get started with Actions
-
+# This is the basic CI workflow
 name: CI
 
-# Controls when the action will run.
 on:
   # Triggers the workflow on push or pull request events but only for the master branch
   push:
@@ -13,19 +11,19 @@ on:
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  # This workflow contains a single job called "test"
-  # lint:
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - uses: actions/checkout@v2
-  #     - uses: actions/setup-node@v1
-  #     - run: npm -g i npm@next-7
-  #     - run: npm ci
-  #     - run: npm run ci:lint
+  # Linting Workflow
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+      - run: npm -g i npm@next-7
+      - run: npm ci
+      - run: npm run ci:lint
+  # Testing Workflow
   test:
-    # needs: [lint]
+    needs: [lint]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
