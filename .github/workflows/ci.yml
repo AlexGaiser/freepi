@@ -38,8 +38,7 @@ jobs:
           key: ${{ runner.os }}-lerna-${{ hashFiles('**/package-lock.json') }}
       
       - name: Install node modules
-        run: npm ci --ignore-scripts
-      
+        run: npm run ci:install
       - name: bootstrap
         run: npm run bootstrap
       - name: link
