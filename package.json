@@ -7,10 +7,13 @@
   "module": "index.js",
   "scripts": {
     "test": "jest --coverage",
+    "bootstrap": "lerna exec npm install",
+    "link": "lerna link",
     "build": "npm run test && rollup -c",
     "build-dev": "rollup -c",
     "format": "prettier . --write",
-    "ci:lint": "eslint . -c .eslintrc.json"
+    "ci:lint": "eslint . -c .eslintrc.json",
+    "ci:install": "npm install && cd ./packages/core && npm install && cd ../JSONPlaceholder && npm install && cd ../freepi && npm install"
   },
   "author": "Alex Gaiser and Ian Scott",
   "license": "ISC",
