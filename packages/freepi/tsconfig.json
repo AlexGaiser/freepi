@@ -8,6 +8,11 @@
     "declaration": true,
     "moduleResolution": "node"
   },
-  "include": ["*.ts", "jest.config.js"],
+  "include": [
+    "*.ts",
+    "jest.config.js",
+    "packages/freepi/index.ts",
+    "lib/index.ts"
+  ],
   "exclude": ["*.test.ts"]
 }

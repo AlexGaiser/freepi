@@ -1,24 +1,22 @@
 {
-  "name": "freepi",
-  "version": "1.0.4",
-  "description": "Wrapper for various free apis",
+  "name": "freepi-monorepo",
+  "version": "0.0.0",
+  "description": "Monorepo",
   "main": "dist/cjs.js",
   "browser": "dist/index.js",
   "module": "index.js",
   "scripts": {
     "test": "jest --coverage",
+    "bootstrap": "lerna exec npm install",
+    "link": "lerna link",
     "build": "npm run test && rollup -c",
     "build-dev": "rollup -c",
     "format": "prettier . --write",
-    "ci:lint": "eslint . -c .eslintrc.json"
+    "ci:lint": "eslint . -c .eslintrc.json",
+    "ci:install": "npm install && cd ./packages/core && npm install && cd ../JSONPlaceholder && npm install && cd ../freepi && npm install"
   },
   "author": "Alex Gaiser and Ian Scott",
   "license": "ISC",
-  "dependencies": {
-    "@freepi/core": "^1.0.11",
-    "@types/axios": "^0.14.0",
-    "axios": "^0.21.1"
-  },
   "devDependencies": {
     "@babel/core": "^7.12.16",
     "@babel/preset-env": "^7.12.16",
@@ -29,6 +27,7 @@
     "eslint-config-prettier": "^7.2.0",
     "eslint-plugin-prettier": "^3.3.1",
     "jest": "^26.6.3",
+    "lerna": "^3.22.1",
     "prettier": "^2.2.1",
     "rollup": "^2.38.5",
     "rollup-plugin-babel": "^4.0.3",

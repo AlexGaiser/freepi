@@ -3,7 +3,7 @@ import resolve from 'rollup-plugin-node-resolve';
 import typescript from 'rollup-plugin-typescript2';
 
 export default {
-  input: 'index.ts',
+  input: 'lib/index.ts',
   output: [
     {
       file: 'dist/cjs.js',
@@ -35,5 +35,5 @@ export default {
     },
   ],
   plugins: [resolve(), commonjs(), typescript()],
-  external: ['lodash/random', 'axios'],
+  external: ['axios'],
 };

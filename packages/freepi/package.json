@@ -1,0 +1,24 @@
+{
+  "name": "freepi",
+  "version": "1.1.3",
+  "description": "Wrapper for various free apis",
+  "main": "dist/cjs.js",
+  "browser": "dist/index.js",
+  "module": "index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "test": "jest --coverage",
+    "build": "rollup -c",
+    "build-dev": "rollup -c",
+    "format": "prettier . --write",
+    "ci:lint": "eslint . -c .eslintrc.json"
+  },
+  "author": "Alex Gaiser and Ian Scott",
+  "license": "ISC",
+  "dependencies": {
+    "@freepi/core": "^1.1.3",
+    "@freepi/jsonplaceholder": "^1.1.3",
+    "@types/axios": "^0.14.0",
+    "axios": "^0.21.1"
+  }
+}

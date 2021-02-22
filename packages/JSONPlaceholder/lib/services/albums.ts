@@ -1,7 +1,7 @@
 import { AxiosRequestConfig } from 'axios';
 import { Album } from '../models/Album';
 import { Photo } from '../models/Photo';
-import { createNested, getBaseFunctions } from '../services/base.req';
+import { createNested, getBaseFunctions } from './base.req';
 
 export const albums = (config: AxiosRequestConfig) => {
   const nestedPaths: string[] = ['/photos'];

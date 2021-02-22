@@ -43,6 +43,10 @@ class RequestBuilder {
     return Axios(this.request);
   };
 
+  public printVersion = (): void => {
+    console.log('version V1.1.1');
+  };
+
   public getReqObject = () => {
     return this.request;
   };

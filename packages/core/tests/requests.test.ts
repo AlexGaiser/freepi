@@ -1,4 +1,4 @@
-import { Todo } from '../../wrappers/JSONPlaceholder/lib/models/Todo';
+import { Todo } from '../../JSONPlaceholder/lib/models/Todo';
 import requests from '../lib/requests';
 
 test('get request', async () => {
