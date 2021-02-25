@@ -1,5 +1,13 @@
 import Axios, { AxiosRequestConfig, AxiosPromise } from 'axios';
 
+export const setInterceptor = (
+  interceptorConfig: AxiosRequestConfig,
+): void => {
+  Axios.interceptors.request.use(function (config) {
+    return { ...config, ...interceptorConfig };
+  });
+};
+
 export const request = <T>(
   config: AxiosRequestConfig,
 ): AxiosPromise<T> => {

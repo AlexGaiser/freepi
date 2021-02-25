@@ -1,5 +1,5 @@
 import { Todo } from '../../JSONPlaceholder/lib/models/Todo';
-import requests from '../lib/requests';
+import requests, { get, setInterceptor } from '../lib/requests';
 
 test('get request', async () => {
   const response = await requests.get<Todo>(
@@ -24,4 +24,17 @@ test('post request', async () => {
     id: 101,
     something: 'something',
   });
+});
+
+test('test interceptor', async () => {
+  const interceptor = setInterceptor({
+    headers: {
+      Authorization: 'Client-ID',
+    },
+  });
+
+  const response = await get(
+    'https://api.unsplash.com/photos/random',
+  );
+  expect(response.status).toBe(200);
 });

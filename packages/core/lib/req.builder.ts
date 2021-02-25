@@ -1,6 +1,8 @@
 import Axios, {
+  AxiosInstance,
   AxiosPromise,
   AxiosRequestConfig,
+  AxiosStatic,
   Method,
 } from 'axios';
 
@@ -8,11 +10,18 @@ class RequestBuilder {
   private baseURL: string;
   private request: AxiosRequestConfig;
   private urlArr: string[];
+  private Req: AxiosStatic;
 
-  constructor(baseURL: string) {
+  constructor(baseURL: string, Req: AxiosStatic = Axios) {
     this.baseURL = baseURL;
     this.urlArr = [baseURL];
+    this.Req = Req;
   }
+
+  public setReq = (Req: AxiosStatic) => {
+    this.Req = Req;
+    return this;
+  };
 
   public setReqUrl = (url: string) => {
     this.urlArr = [url];
@@ -40,7 +49,7 @@ class RequestBuilder {
   };
 
   public sendRequest = (): AxiosPromise => {
-    return Axios(this.request);
+    return this.Req(this.request);
   };
 
   public printVersion = (): void => {
