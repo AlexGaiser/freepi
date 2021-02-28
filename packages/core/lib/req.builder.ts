@@ -10,15 +10,15 @@ class RequestBuilder {
   private baseURL: string;
   private request: AxiosRequestConfig;
   private urlArr: string[];
-  private Req: AxiosStatic;
+  private Req: AxiosInstance;
 
-  constructor(baseURL: string, Req: AxiosStatic = Axios) {
+  constructor(baseURL: string, Req: AxiosInstance = Axios) {
     this.baseURL = baseURL;
     this.urlArr = [baseURL];
     this.Req = Req;
   }
 
-  public setReq = (Req: AxiosStatic) => {
+  public setReq = (Req: AxiosInstance) => {
     this.Req = Req;
     return this;
   };
