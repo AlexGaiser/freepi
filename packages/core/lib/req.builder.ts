@@ -1,3 +1,4 @@
+import axios, { AxiosResponse } from 'axios';
 import Axios, {
   AxiosInstance,
   AxiosPromise,
@@ -6,15 +7,54 @@ import Axios, {
   Method,
 } from 'axios';
 
-class RequestBuilder {
-  private baseURL: string;
-  private request: AxiosRequestConfig;
-  private urlArr: string[];
+export class RequestFactory {
   private Req: AxiosInstance;
 
-  constructor(baseURL: string, Req: AxiosInstance = Axios) {
-    this.baseURL = baseURL;
-    this.urlArr = [baseURL];
+  constructor(config: AxiosRequestConfig = {}) {
+    this.Req = axios.create(config);
+  }
+
+  setInstance(instance: AxiosInstance): RequestFactory {
+    this.Req = instance;
+    return this;
+  }
+
+  public setBaseURL(url: string): RequestFactory {
+    this.Req.defaults.baseURL = url;
+    return this;
+  }
+
+  public setDefaults(defaults: AxiosRequestConfig) {
+    this.Req.defaults = { ...defaults };
+  }
+
+  public setRequestInterceptor(
+    func: (config: AxiosRequestConfig) => AxiosRequestConfig,
+  ): RequestFactory {
+    this.Req.interceptors.request.use(func);
+    return this;
+  }
+
+  public setResponseInterceptor(
+    func: (res: AxiosResponse) => AxiosResponse,
+  ): RequestFactory {
+    this.Req.interceptors.response.use(func);
+    return this;
+  }
+
+  public create(path?: string): RequestBuilder {
+    const request = new RequestBuilder(this.Req);
+    request.extendPath(path);
+
+    return request;
+  }
+}
+
+export class RequestBuilder {
+  private Req: AxiosInstance;
+  private request: AxiosRequestConfig;
+  public urlArr: string[] = [];
+  constructor(Req: AxiosInstance = Axios) {
     this.Req = Req;
   }
 
@@ -23,9 +63,13 @@ class RequestBuilder {
     return this;
   };
 
-  public setReqUrl = (url: string) => {
+  public setUrl = (url: string) => {
     this.urlArr = [url];
     return this;
+  };
+
+  public extendPath = (urlSegment: string) => {
+    this.urlArr.push('/' + urlSegment);
   };
 
   public extendURL = (urlSegment: string) => {
@@ -49,6 +93,7 @@ class RequestBuilder {
   };
 
   public sendRequest = (): AxiosPromise => {
+    console.log(this.request);
     return this.Req(this.request);
   };
 

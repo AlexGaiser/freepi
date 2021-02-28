@@ -1,14 +1,16 @@
-import RequestBuilder from '../lib/req.builder';
+import RequestBuilder, { RequestFactory } from '../lib/req.builder';
 import Axios from 'axios';
 
 describe('Request Builder', () => {
-  const req = new RequestBuilder(
-    'https://jsonplaceholder.typicode.com/posts',
-  );
+  const config = {
+    baseURL: 'https://jsonplaceholder.typicode.com',
+  };
+
+  const req = new RequestFactory(config).create();
 
   test('Test send request', async () => {
     const res = await req
-      .extendURL('/1')
+      .extendURL('/posts/1')
       .buildRequest()
       .sendRequest();
     expect(res.status).toBe(200);
@@ -17,22 +19,21 @@ describe('Request Builder', () => {
   });
 
   test('Interceptor test', async () => {
-    const testAxios = Axios.create();
-
     testAxios.interceptors.request.use((config) => {
       config.url += '/1';
       return { ...config };
     });
 
-    const req = new RequestBuilder(
-      'https://jsonplaceholder.typicode.com/posts',
-    );
+    const req = new RequestFactory(testAxios).create();
     const res = await req
-      .setReq(testAxios)
+      .extendURL('/posts')
       .buildRequest()
-      .sendRequest();
-    expect(res.config.url).toBe(
-      'https://jsonplaceholder.typicode.com/posts/1',
-    );
+      .sendRequest()
+      .catch((e) => {
+        console.log(e.config);
+        return e;
+      });
+    expect(res.config.url).toBe('/posts/1');
+    expect(res.data.id).toBe(1);
   });
 });
