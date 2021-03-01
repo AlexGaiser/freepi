@@ -8,13 +8,13 @@ const jpFactory: RequestFactory = new RequestFactory({
 //   return { ...config, headers: 'Authorization test' };
 // });
 
-// jpFactory.setRequestInterceptor((config) => {
-//   const ext = '/posts';
-//   const url = config.url + ext;
+jpFactory.setRequestInterceptor((config) => {
+  const ext = '/posts';
+  const url = config.url + ext;
 
-//   return { ...config, url };
-// });
+  return { ...config, url };
+});
 
-const req = jpFactory.create('posts/1');
+const req = jpFactory.create('/1');
 
-req.buildRequest().sendRequest();
+req.build().send();

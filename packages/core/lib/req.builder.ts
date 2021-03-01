@@ -24,8 +24,9 @@ export class RequestFactory {
     return this;
   }
 
-  public setDefaults(defaults: AxiosRequestConfig) {
+  public setDefaults(defaults: AxiosRequestConfig): RequestFactory {
     this.Req.defaults = { ...defaults };
+    return this;
   }
 
   public setRequestInterceptor(
@@ -44,8 +45,9 @@ export class RequestFactory {
 
   public create(path?: string): RequestBuilder {
     const request = new RequestBuilder(this.Req);
-    request.extendPath(path);
-
+    if (path) {
+      request.setURL(path);
+    }
     return request;
   }
 }
@@ -54,8 +56,12 @@ export class RequestBuilder {
   private Req: AxiosInstance;
   private request: AxiosRequestConfig;
   public urlArr: string[] = [];
-  constructor(Req: AxiosInstance = Axios) {
+  constructor(
+    Req: AxiosInstance = Axios,
+    config: AxiosRequestConfig = {},
+  ) {
     this.Req = Req;
+    this.request = { ...config };
   }
 
   public setReq = (Req: AxiosInstance) => {
@@ -63,13 +69,9 @@ export class RequestBuilder {
     return this;
   };
 
-  public setUrl = (url: string) => {
+  public setURL = (url: string) => {
     this.urlArr = [url];
     return this;
-  };
-
-  public extendPath = (urlSegment: string) => {
-    this.urlArr.push('/' + urlSegment);
   };
 
   public extendURL = (urlSegment: string) => {
@@ -77,7 +79,7 @@ export class RequestBuilder {
     return this;
   };
 
-  public setReqMethod = (method: Method) => {
+  public setMethod = (method: Method) => {
     this.request = {
       ...this.request,
       method,
@@ -85,16 +87,15 @@ export class RequestBuilder {
     return this;
   };
 
-  public buildRequest = () => {
+  public build = () => {
     const url = encodeURI(this.urlArr.join(''));
     this.request = { ...this.request, url };
     // would be a good place to add some validation logic here to make sure
     return this;
   };
 
-  public sendRequest = (): AxiosPromise => {
-    console.log(this.request);
-    return this.Req(this.request);
+  public send = (): AxiosPromise | AxiosResponse => {
+    return this.Req(this.request).catch((e) => e.response);
   };
 
   public printVersion = (): void => {
