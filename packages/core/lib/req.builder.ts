@@ -53,7 +53,7 @@ export class RequestFactory {
 export class RequestBuilder {
   private Req: AxiosInstance;
   private request: AxiosRequestConfig;
-  public urlArr: string[] = [];
+  private urlArr: string[] = [];
   constructor(
     Req: AxiosInstance = Axios,
     config: AxiosRequestConfig = {},
@@ -65,6 +65,15 @@ export class RequestBuilder {
 
   public get config(): AxiosRequestConfig {
     return { ...this.request };
+  }
+
+  private buildURL() {
+    return encodeURI(this.urlArr.join(''));
+  }
+
+  public get url(): string {
+    const url = this.buildURL();
+    return url;
   }
 
   public setReq = (Req: AxiosInstance) => {
