@@ -6,18 +6,17 @@ describe('Request Builder', () => {
     baseURL: 'https://jsonplaceholder.typicode.com',
   };
 
-  const req = new RequestFactory(config).create();
+  const testFactory = new RequestFactory(config);
 
   test('Test send request', async () => {
+    const req = testFactory.create();
+
     const res = await req.extendURL('/posts/1').build().send();
     expect(res.status).toBe(200);
-    console.log(res.data);
     expect(res.data.id).toBe(1);
   });
 
   test('Interceptor test', async () => {
-    // testAxios.interceptors.request.use();
-
     const reqFactory = new RequestFactory(config);
     reqFactory.setRequestInterceptor((config) => {
       config.url += '/1';
@@ -31,5 +30,19 @@ describe('Request Builder', () => {
     expect(res.data.id).toBe(1);
   });
 
-  test('post request', () => {});
+  test('post request', async () => {
+    const res = await testFactory
+      .create({
+        url: '/posts',
+        method: 'post',
+        data: { something: 'something' },
+      })
+      .build()
+      .send();
+
+    expect(res.data).toStrictEqual({
+      id: 101,
+      something: 'something',
+    });
+  });
 });

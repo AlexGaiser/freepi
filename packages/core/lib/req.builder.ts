@@ -43,11 +43,9 @@ export class RequestFactory {
     return this;
   }
 
-  public create(path?: string): RequestBuilder {
-    const request = new RequestBuilder(this.Req);
-    if (path) {
-      request.setURL(path);
-    }
+  public create(config: AxiosRequestConfig = {}): RequestBuilder {
+    const request = new RequestBuilder(this.Req, config);
+
     return request;
   }
 }
@@ -61,7 +59,12 @@ export class RequestBuilder {
     config: AxiosRequestConfig = {},
   ) {
     this.Req = Req;
+    this.urlArr = config.url ? [config.url] : [];
     this.request = { ...config };
+  }
+
+  public get config(): AxiosRequestConfig {
+    return { ...this.request };
   }
 
   public setReq = (Req: AxiosInstance) => {
@@ -79,7 +82,22 @@ export class RequestBuilder {
     return this;
   };
 
-  public setMethod = (method: Method) => {
+  public setParams = (params: any): RequestBuilder => {
+    this.request.params = { ...params };
+    return this;
+  };
+
+  public addParams = (params: any): RequestBuilder => {
+    this.request.params = { ...this.request.params, ...params };
+    return this;
+  };
+
+  public setPayload = (payload: any): RequestBuilder => {
+    this.request.data = { ...payload };
+    return this;
+  };
+
+  public setMethod = (method: Method): RequestBuilder => {
     this.request = {
       ...this.request,
       method,
