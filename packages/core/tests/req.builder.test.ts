@@ -1,4 +1,4 @@
-import RequestBuilder, { RequestFactory } from '../lib/req.builder';
+import { RequestBuilder, RequestFactory } from '../lib/index';
 import Axios from 'axios';
 
 describe('Request Builder', () => {
