@@ -51,18 +51,26 @@ export class RequestFactory {
 }
 
 interface RequestBuilderConfig extends AxiosRequestConfig {
-  Req: AxiosInstance;
+  Req?: AxiosInstance;
 }
 
 export class RequestBuilder {
   private Req: AxiosInstance;
   private request: AxiosRequestConfig;
   private urlArr: string[] = [];
-  constructor(config: RequestBuilderConfig = { Req: Axios }) {
-    const { Req } = config;
+  constructor(config: RequestBuilderConfig = {}) {
+    const defaultConfig = {
+      Req: Axios,
+    };
+    const filledConfig: RequestBuilderConfig = {
+      ...defaultConfig,
+      ...config,
+    };
+
+    const { Req, ...requestConfig } = filledConfig;
     this.Req = Req;
     this.urlArr = config.url ? [config.url] : [];
-    this.request = { ...config };
+    this.request = { ...requestConfig };
   }
 
   public get config(): AxiosRequestConfig {
@@ -127,16 +135,8 @@ export class RequestBuilder {
     return this;
   };
 
-  public send = (): AxiosPromise => {
+  public send = <T>(): AxiosPromise<T> => {
     return this.Req(this.request).catch((e) => e.response);
-  };
-
-  public printVersion = (): void => {
-    console.log('version V1.1.1');
-  };
-
-  public getReqObject = () => {
-    return this.request;
   };
 }
 
