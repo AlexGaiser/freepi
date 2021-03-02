@@ -9,7 +9,6 @@
   "scripts": {
     "test": "jest --coverage",
     "build": "rollup -c",
-    "build-dev": "rollup -c",
     "format": "prettier . --write",
     "ci:lint": "eslint . -c .eslintrc.json"
   },
