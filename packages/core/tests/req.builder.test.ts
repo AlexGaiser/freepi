@@ -72,4 +72,16 @@ describe('Request Builder', () => {
     const res = await req.build().send();
     expect(res.data.id).toBe(1);
   });
+
+  test('Request Builder without Factory', async () => {
+    const req = new RequestBuilder();
+    const res = await req
+      .setURL('https://jsonplaceholder.typicode.com')
+      .setMethod('get')
+      .extendURL('/posts')
+      .build()
+      .send();
+    expect(res.data.length).toBeGreaterThan(1);
+    expect(res.status).toBe(200);
+  });
 });

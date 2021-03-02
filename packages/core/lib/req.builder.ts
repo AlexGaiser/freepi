@@ -44,20 +44,22 @@ export class RequestFactory {
   }
 
   public create(config: AxiosRequestConfig = {}): RequestBuilder {
-    const request = new RequestBuilder(this.Req, config);
+    const request = new RequestBuilder({ Req: this.Req, ...config });
 
     return request;
   }
+}
+
+interface RequestBuilderConfig extends AxiosRequestConfig {
+  Req: AxiosInstance;
 }
 
 export class RequestBuilder {
   private Req: AxiosInstance;
   private request: AxiosRequestConfig;
   private urlArr: string[] = [];
-  constructor(
-    Req: AxiosInstance = Axios,
-    config: AxiosRequestConfig = {},
-  ) {
+  constructor(config: RequestBuilderConfig = { Req: Axios }) {
+    const { Req } = config;
     this.Req = Req;
     this.urlArr = config.url ? [config.url] : [];
     this.request = { ...config };
@@ -65,6 +67,10 @@ export class RequestBuilder {
 
   public get config(): AxiosRequestConfig {
     return { ...this.request };
+  }
+
+  public setConfig(config: AxiosRequestConfig) {
+    this.request = { ...config };
   }
 
   private buildURL() {
