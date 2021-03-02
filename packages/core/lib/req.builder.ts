@@ -121,7 +121,7 @@ export class RequestBuilder {
     return this;
   };
 
-  public send = (): AxiosPromise | AxiosResponse => {
+  public send = (): AxiosPromise => {
     return this.Req(this.request).catch((e) => e.response);
   };
 
