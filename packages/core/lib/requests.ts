@@ -88,6 +88,7 @@ export const requests = {
   get,
   post,
   request,
+  customReqInit,
 };
 
 export default requests;
