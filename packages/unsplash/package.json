@@ -1,0 +1,24 @@
+{
+  "name": "@freepi/unsplash",
+  "version": "2.1.0",
+  "description": "Unsplash Library for FreePI package",
+  "main": "dist/cjs.js",
+  "browser": "dist/index.js",
+  "module": "index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "test": "jest --coverage",
+    "build": "rollup -c",
+    "publish-npm": "npm run test && rollup -c && npm publish --access public"
+  },
+  "author": "Alex Gaiser",
+  "license": "MIT",
+  "files": [
+    "/lib",
+    "/dist"
+  ],
+  "dependencies": {
+    "@freepi/core": "2.1.0",
+    "dotenv": "^8.2.0"
+  }
+}
