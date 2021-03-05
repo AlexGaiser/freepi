@@ -18,7 +18,10 @@
     "/dist"
   ],
   "dependencies": {
-    "@freepi/core": "2.1.0",
+    "@freepi/core": "^2.1.2",
     "dotenv": "^8.2.0"
+  },
+  "devDependencies": {
+    "@types/axios": "^0.14.0"
   }
 }

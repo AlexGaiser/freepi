@@ -11,4 +11,12 @@ describe('Testing Basic Unsplash API Calls', () => {
     });
     expect(typeof instance.getAccessKey()).toBe('string');
   });
+  test('photos get random', async () => {
+    const instance = new Unsplash({
+      access_key: process.env.UNSPLASH_CLIENT_ID,
+    });
+
+    const res = await instance.photos.getRandom();
+    expect(res.status).toBe(200);
+  });
 });
