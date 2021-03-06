@@ -36,7 +36,17 @@ export const get = <T>(
   return request<T>(config);
 };
 
-export const customReqInit = (config: AxiosRequestConfig = {}) => {
+interface Requests {
+  get: (string, AxiosRequestConfig?) => AxiosPromise;
+  post: (string, AxiosRequestConfig?) => AxiosPromise;
+  request: (AxiosRequestConfig) => AxiosPromise;
+  setInterceptor: (AxiosRequestConfig) => void;
+  customReqInit?: (AxiosRequestConfig) => Requests;
+}
+
+export const customReqInit = (
+  config: AxiosRequestConfig = {},
+): Requests => {
   const Req = Axios.create(config);
   const setInterceptor = (
     interceptorConfig: AxiosRequestConfig,
