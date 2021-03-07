@@ -1,3 +1,5 @@
+import { BasicQuery, RandomQuery } from '../models/ParamTypes';
+
 interface RequestLib {
   get: (path: string, config?) => any;
   post: (path: string, config?) => any;
@@ -6,12 +8,19 @@ interface RequestLib {
 
 export const photos = (request: RequestLib) => {
   const basePath = '/photos';
+
   const get = (path, config = {}) => {
     return request.get(`${basePath}${path}`, config);
   };
-  const getRandom = () => {
-    return get(`/random`);
+
+  const getAll = (params: BasicQuery = {}) => {
+    return request.get(`${basePath}`, { params });
   };
+
+  const getRandom = (params: RandomQuery = {}) => {
+    return get(`/random`, { params });
+  };
+
   const getById = (id: string) => {
     return get(`/${id}`);
   };
@@ -19,6 +28,7 @@ export const photos = (request: RequestLib) => {
   const getPhotoStatistics = (id: string) => {
     return get(`/${id}/statistics`);
   };
+
   const trackDownload = (id: string) => {
     return get(`/${id}/download`);
   };
@@ -45,5 +55,6 @@ export const photos = (request: RequestLib) => {
     updatePhoto,
     likePhoto,
     unLikePhoto,
+    getAll,
   };
 };
