@@ -6,7 +6,7 @@ const requests = customReqInit();
 
 describe('custom request methods', () => {
   test('get request', async () => {
-    const response = await requests.get<Todo>(
+    const response = await requests.get<any>(
       'https://jsonplaceholder.typicode.com/todos/1',
     );
 
