@@ -33,7 +33,7 @@ jobs:
             node_modules
             packages/*/node_modules
             !packages/*/node_modules/@material
-          key: ${{ runner.os }}-lerna-${{ hashFiles('**/package-lock.json') }
+          key: ${{ runner.os }}-lerna-${{ hashFiles('**/package-lock.json') }}
       - name: Install node modules
         run: npm install
       - name: bootstrap
