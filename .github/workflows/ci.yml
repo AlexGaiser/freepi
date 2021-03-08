@@ -34,10 +34,11 @@ jobs:
             packages/*/node_modules
             !packages/*/node_modules/@material
           key: ${{ runner.os }}-lerna-${{ hashFiles('**/package-lock.json') }}
-      
       - name: Install node modules
         run: npm install
       - name: bootstrap
         run: npm run bootstrap
       - name: Run test suite
+        env:
+          UNSPLASH_CLIENT_ID: ${{secrets.UNSPLASH_CLIENT_ID}}
         run: npm run test
