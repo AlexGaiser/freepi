@@ -35,7 +35,7 @@ import JSONPlaceholder from "@freepi/jsonplaceholder";
 
 Then create a local instance of the wrapper following the ReadMe for the individual package (Some packages may vary in their configuration)
 
-```
+```javascript
 const jsonWrap = new JSONPlaceholder();
 
 const todos = await jsonWrap.todos.find({ userId: 1 })
