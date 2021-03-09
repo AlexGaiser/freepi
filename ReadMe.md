@@ -7,10 +7,40 @@ This is a library designed to give rapid and easy access to a variety of free AP
 This Library also serves as a way to document and collect various free apis which can speed development without frequently needing to return to the source documentation.
 
 This Library is created as a MonoRepo with each individual wrapper and project existing as a separate package. It uses Lerna to bootstrap and symlink the packages as well as for managing version control. This means that every tool included in this library can be downloaded separately. It takes inspiration from the Jest, Babel, and React in it's organization.
+  
+### Installation: 
+
+To install FreePI run 
+```bash
+$ npm install freepi
+
+# Or to install an individual package:
+
+$ npm install @freepi/JSONPlaceholder 
+
+```
 
 ### How to Use:
 
-Simply install the library and import the API wrapper you wish to use. Alternatively, each wrapper can be downloaded individually using the @freepi/<package> notation.
+Simply install the library and import the API wrapper you wish to use from the freepi library. Alternatively, each wrapper can be downloaded individually using the @freepi/<package> notation.
+  
+```javascript
+import { JSONPlaceholder } from "freepi";
+
+# OR
+
+import JSONPlaceholder from "@freepi/jsonplaceholder";
+
+```
+
+Then create a local instance of the wrapper following the ReadMe for the individual package (Some packages may vary in their configuration)
+
+```
+const jsonWrap = new JSONPlaceholder();
+
+const todos = await jsonWrap.todos.find({ userId: 1 })
+
+```
 
 ### APIs Supported:
 
@@ -22,6 +52,8 @@ Simply install the library and import the API wrapper you wish to use. Alternati
 **Lorem Ipsum Generator**
 
 ### Other Features:
+
+The library is written in TypeScript and bundled to include all the necessary types information. This means IntelliSense in VSCODE or another IDE will work with FreePI and if you are using TypeScript, all the Types will be included from the start!
 
 Features a standalone core library with several handy services to aid in rapid development of APIs for either FreePI or your own API wrapper projects. Including a a custom request library based on Axios.
 
