@@ -15,10 +15,10 @@ Simply install the library and import the API wrapper you wish to use. Alternati
 ### APIs Supported:
 
 **JSONPlaceholder**
+**Unsplash** (Coming Soon)
 
 ### APIs To Be Supported:
 
-**Unsplash**
 **Lorem Ipsum Generator**
 
 ### Other Features:
