@@ -9,7 +9,6 @@ describe('Testing Basic Unsplash API Calls', () => {
   });
 
   test('initializes unsplash', () => {
-    console.log(process.env.UNSPLASH_CLIENT_ID);
     const test = new Unsplash({
       access_key: process.env.UNSPLASH_CLIENT_ID,
     });
