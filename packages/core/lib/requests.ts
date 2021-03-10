@@ -24,12 +24,36 @@ export const post = <T>(
   return request<T>(config);
 };
 
+export const put = <T>(
+  url: string,
+  params: AxiosRequestConfig,
+): AxiosPromise<T> => {
+  const config: AxiosRequestConfig = {
+    method: 'post',
+    url,
+    ...params,
+  };
+  return request<T>(config);
+};
+
 export const get = <T>(
   url: string,
   params?: AxiosRequestConfig,
 ): AxiosPromise<T> => {
   const config: AxiosRequestConfig = {
     method: 'get',
+    url,
+    ...params,
+  };
+  return request<T>(config);
+};
+
+export const del = <T>(
+  url: string,
+  params: AxiosRequestConfig,
+): AxiosPromise<T> => {
+  const config: AxiosRequestConfig = {
+    method: 'post',
     url,
     ...params,
   };
@@ -46,10 +70,40 @@ export const customReqInit = (config: AxiosRequestConfig = {}) => {
     });
   };
 
+  const setHeaders = (headers: any = {}) => {
+    Req.interceptors.request.use(function (config) {
+      return { ...config, headers };
+    });
+  };
+
   const request = <T>(
     config: AxiosRequestConfig,
   ): AxiosPromise<T> => {
     return Req(config).catch((e) => e.response);
+  };
+
+  const put = <T>(
+    url: string,
+    params: AxiosRequestConfig,
+  ): AxiosPromise<T> => {
+    const config: AxiosRequestConfig = {
+      method: 'post',
+      url,
+      ...params,
+    };
+    return request<T>(config);
+  };
+
+  const del = <T>(
+    url: string,
+    params: AxiosRequestConfig,
+  ): AxiosPromise<T> => {
+    const config: AxiosRequestConfig = {
+      method: 'post',
+      url,
+      ...params,
+    };
+    return request<T>(config);
   };
 
   const post = <T>(
@@ -78,8 +132,11 @@ export const customReqInit = (config: AxiosRequestConfig = {}) => {
 
   return {
     setInterceptor,
+    setHeaders,
     get,
     post,
+    put,
+    del,
     request,
   };
 };
@@ -87,6 +144,8 @@ export const customReqInit = (config: AxiosRequestConfig = {}) => {
 export const requests = {
   get,
   post,
+  put,
+  del,
   request,
 };
 
