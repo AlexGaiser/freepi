@@ -43,3 +43,17 @@ describe('Testing Basic Unsplash API Calls', () => {
     expect(res.data.length).toBe(2);
   });
 });
+
+describe('search photos', () => {
+  test('search with query', async () => {
+    const test = new Unsplash({
+      access_key: process.env.UNSPLASH_CLIENT_ID,
+    });
+
+    const res = await test.photos.search({
+      query: 'cat',
+      page: 1,
+      per_page: 1,
+    });
+  });
+});

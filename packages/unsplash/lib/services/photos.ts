@@ -1,4 +1,8 @@
-import { BasicQuery, RandomQuery } from '../models/ParamTypes';
+import {
+  BasicQuery,
+  RandomQuery,
+  SearchQuery,
+} from '../models/ParamTypes';
 
 interface RequestLib {
   get: (path: string, config?) => any;
@@ -47,6 +51,10 @@ export const photos = (request: RequestLib) => {
     // return delete(`/${id}/like`);
   };
 
+  const search = (params: SearchQuery) => {
+    return request.get(`/search/photos`, { params });
+  };
+
   return {
     getRandom,
     getById,
@@ -56,5 +64,6 @@ export const photos = (request: RequestLib) => {
     likePhoto,
     unLikePhoto,
     getAll,
+    search,
   };
 };

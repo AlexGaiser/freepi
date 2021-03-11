@@ -20,7 +20,6 @@ export const findNested = <T>(baseURL: string) => (
   ...urlSegments: any
 ) => (params?: IParam<T>): AxiosPromise<T[]> => {
   const pathString = urlSegments.join('/');
-  console.log(`${baseURL}${pathString}`);
   return get<T[]>(`${baseURL}/${pathString}`, params);
 };
 

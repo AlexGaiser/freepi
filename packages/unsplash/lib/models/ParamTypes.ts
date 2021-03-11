@@ -1,3 +1,9 @@
+export interface RequestLib {
+  get: (path: string, config?) => any;
+  post: (path: string, config?) => any;
+  request: (config) => any;
+}
+
 export type OrderBy = 'latest' | 'oldest' | 'popular';
 export type Orientation = 'landscape' | 'portrait' | 'squarish';
 export type Color =
@@ -30,8 +36,8 @@ export interface RandomQuery {
 
 export interface SearchQuery extends BasicQuery {
   collections?: string[];
-  content_filter: string;
-  color: Color;
-  orientation: Orientation;
-  query: string;
+  content_filter?: string;
+  color?: Color;
+  orientation?: Orientation;
+  query?: string;
 }
