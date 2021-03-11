@@ -17,7 +17,9 @@
   "dependencies": {
     "@freepi/core": "^2.1.2-alpha.0",
     "@freepi/jsonplaceholder": "^2.1.2-alpha.0",
+    "@freepi/unsplash": "^2.1.2-alpha.0",
     "@types/axios": "^0.14.0",
     "axios": "^0.21.1"
-  }
+  },
+  "gitHead": "5332630d42c0b636426e4d8720ab168cad66f030"
 }
