@@ -147,6 +147,7 @@ export const requests = {
   put,
   del,
   request,
+  customReqInit,
 };
 
 export default requests;

@@ -32,7 +32,6 @@ describe('JsonPlaceholder', () => {
     const res = await jsonPlaceholder.todos.find({
       title: 'quo adipisci enim quam ut ab',
     });
-    console.log(res);
     expect(res.status).toBe(200);
     expect(res.data.length).toBeGreaterThanOrEqual(1);
     expect(res.data[0].title).toBe('quo adipisci enim quam ut ab');
