@@ -3,6 +3,7 @@ import Axios, {
   AxiosPromise,
   AxiosInstance,
 } from 'axios';
+import { RequestLib } from './models/types';
 
 export const customRequest = (Req: AxiosInstance = Axios) => <T>(
   config: AxiosRequestConfig,
@@ -60,7 +61,9 @@ export const del = <T>(
   return request<T>(config);
 };
 
-export const customReqInit = (config: AxiosRequestConfig = {}) => {
+export const customReqInit = (
+  config: AxiosRequestConfig = {},
+): RequestLib => {
   const Req = Axios.create(config);
   const setInterceptor = (
     interceptorConfig: AxiosRequestConfig,
@@ -70,7 +73,7 @@ export const customReqInit = (config: AxiosRequestConfig = {}) => {
     });
   };
 
-  const setHeaders = (headers: any = {}) => {
+  const setHeaders = (headers: any = {}): void => {
     Req.interceptors.request.use(function (config) {
       return { ...config, headers };
     });
@@ -118,7 +121,7 @@ export const customReqInit = (config: AxiosRequestConfig = {}) => {
     return request<T>(config);
   };
 
-  const get = <T>(
+  const get = <T = any>(
     url: string,
     params?: AxiosRequestConfig,
   ): AxiosPromise<T> => {
@@ -141,7 +144,7 @@ export const customReqInit = (config: AxiosRequestConfig = {}) => {
   };
 };
 
-export const requests = {
+export const requests: RequestLib = {
   get,
   post,
   put,
