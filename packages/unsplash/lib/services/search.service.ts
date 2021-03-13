@@ -1,4 +1,4 @@
-import { RequestLib, SearchQuery } from '../models/ParamTypes';
+import { RequestLib } from '../../../core/lib/models/types';
 
 export const search = (request: RequestLib) => <T>(path: string) => (
   params: T,

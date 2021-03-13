@@ -19,7 +19,7 @@
   ],
   "dependencies": {
     "@freepi/core": "^2.1.2",
-    "dotenv": "^8.2.0"
+    "axios": "^0.21.0"
   },
   "devDependencies": {
     "@types/axios": "^0.14.0"
