@@ -45,7 +45,7 @@ const todos = await jsonWrap.todos.find({ userId: 1 })
 ### APIs Supported:
 
 **JSONPlaceholder**
-**Unsplash** (Coming Soon)
+**Unsplash**
 
 ### APIs To Be Supported:
 
