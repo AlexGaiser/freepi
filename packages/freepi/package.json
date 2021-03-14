@@ -1,6 +1,6 @@
 {
   "name": "freepi",
-  "version": "2.2.0-alpha.0",
+  "version": "2.2.0",
   "description": "Wrapper for various free apis",
   "main": "dist/cjs.js",
   "browser": "dist/index.js",
@@ -17,7 +17,7 @@
   "dependencies": {
     "@freepi/core": "^2.2.0-alpha.0",
     "@freepi/jsonplaceholder": "^2.2.0-alpha.0",
-    "@freepi/unsplash": "^2.2.0-alpha.0",
+    "@freepi/unsplash": "^2.2.0",
     "@types/axios": "^0.14.0",
     "axios": "^0.21.1"
   },
