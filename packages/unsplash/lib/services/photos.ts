@@ -45,7 +45,7 @@ export const photos = (request: RequestLib) => {
     return request.del(`/${id}/like`);
   };
 
-  const search = (params: SearchQuery) => {
+  const search = (params: SearchQuery): AxiosPromise => {
     return request.get(`/search/photos`, { params });
   };
 
