@@ -1,13 +1,13 @@
 {
   "compilerOptions": {
+    "target": "ES5",
     "module": "ES6",
     "noImplicitAny": false,
     "removeComments": true,
     "preserveConstEnums": true,
     "sourceMap": true,
-    "declaration": true,
-    "moduleResolution": "node"
+    "declaration": true
   },
-  "include": ["lib/*.ts"],
+  "include": ["lib/**/*"],
   "exclude": ["*.test.ts"]
 }
