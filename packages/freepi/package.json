@@ -1,6 +1,6 @@
 {
   "name": "freepi",
-  "version": "2.2.0",
+  "version": "2.2.1-alpha.0",
   "description": "Wrapper for various free apis",
   "main": "dist/cjs.js",
   "browser": "dist/index.js",
@@ -15,9 +15,9 @@
   "author": "Alex Gaiser and Ian Scott",
   "license": "ISC",
   "dependencies": {
-    "@freepi/core": "^2.2.0-alpha.0",
-    "@freepi/jsonplaceholder": "^2.2.0-alpha.0",
-    "@freepi/unsplash": "^2.2.0",
+    "@freepi/core": "^2.2.1-alpha.0",
+    "@freepi/jsonplaceholder": "^2.2.1-alpha.0",
+    "@freepi/unsplash": "^2.2.1-alpha.0",
     "@types/axios": "^0.14.0",
     "axios": "^0.21.1"
   },
