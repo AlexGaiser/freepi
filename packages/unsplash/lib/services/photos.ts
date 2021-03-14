@@ -34,15 +34,15 @@ export const photos = (request: RequestLib) => {
   };
 
   const updatePhoto = (id, params: any): AxiosPromise => {
-    return request.put(`/${id}`, params);
+    return request.put(`${basePath}/${id}`, params);
   };
 
   const likePhoto = (id: string): AxiosPromise => {
-    return get(`/${id}/like`);
+    return request.post(`${basePath}/${id}/like`);
   };
 
   const unLikePhoto = (id: string): AxiosPromise => {
-    return request.del(`/${id}/like`);
+    return request.del(`${basePath}/${id}/like`);
   };
 
   const search = (params: SearchQuery): AxiosPromise => {
