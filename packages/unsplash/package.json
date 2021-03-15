@@ -1,6 +1,6 @@
 {
   "name": "@freepi/unsplash",
-  "version": "2.2.1-alpha.0",
+  "version": "2.2.1",
   "description": "Unsplash Library for FreePI package",
   "main": "dist/cjs.js",
   "browser": "dist/index.js",
@@ -18,9 +18,9 @@
     "/dist"
   ],
   "dependencies": {
-    "@freepi/core": "^2.2.1-alpha.0",
-    "axios": "^0.21.0",
-    "@types/axios": "^0.14.0"
+    "@freepi/core": "^2.2.1",
+    "@types/axios": "^0.14.0",
+    "axios": "^0.21.0"
   },
   "devDependencies": {
     "dotenv": "^8.2.0"
