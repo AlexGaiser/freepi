@@ -1,7 +1,7 @@
 import {
   BasicQuery,
   RandomQuery,
-  SearchQuery,
+  PhotoQuery,
 } from '../models/ParamTypes';
 import { RequestLib } from '../../../core/lib/models/types';
 import { AxiosPromise } from 'axios';
@@ -45,7 +45,7 @@ export const photos = (request: RequestLib) => {
     return request.del(`${basePath}/${id}/like`);
   };
 
-  const search = (params: SearchQuery): AxiosPromise => {
+  const search = (params: PhotoQuery): AxiosPromise => {
     return request.get(`/search/photos`, { params });
   };
 
