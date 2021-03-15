@@ -5,6 +5,7 @@ export interface RequestLib {
 }
 
 export type OrderBy = 'latest' | 'oldest' | 'popular';
+export type SearchNamespace = 'users' | 'collections' | 'photos';
 export type Orientation = 'landscape' | 'portrait' | 'squarish';
 export type Color =
   | 'black_and_white'
@@ -34,7 +35,7 @@ export interface RandomQuery {
   count?: number;
 }
 
-export interface SearchQuery extends BasicQuery {
+export interface PhotoQuery extends BasicQuery {
   collections?: string[];
   content_filter?: string;
   color?: Color;

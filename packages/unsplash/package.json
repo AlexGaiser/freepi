@@ -19,10 +19,11 @@
   ],
   "dependencies": {
     "@freepi/core": "^2.2.1-alpha.0",
-    "axios": "^0.21.0"
+    "axios": "^0.21.0",
+    "@types/axios": "^0.14.0"
   },
   "devDependencies": {
-    "@types/axios": "^0.14.0"
+    "dotenv": "^8.2.0"
   },
   "gitHead": "5332630d42c0b636426e4d8720ab168cad66f030"
 }

@@ -1,5 +1,6 @@
 import Unsplash from '../lib';
 import * as dotenv from 'dotenv';
+import { PhotoQuery } from '../lib/models/ParamTypes';
 
 dotenv.config({ path: `${__dirname}/../.env` });
 
@@ -45,7 +46,7 @@ describe('Testing Basic Unsplash API Calls', () => {
 });
 
 describe('search photos', () => {
-  test('search with query', async () => {
+  test('search with photos query', async () => {
     const test = new Unsplash({
       access_key: process.env.UNSPLASH_CLIENT_ID,
     });
@@ -55,5 +56,19 @@ describe('search photos', () => {
       page: 1,
       per_page: 1,
     });
+    expect(res.status).toBe(200);
+  });
+  test('search with defualt query', async () => {
+    const test = new Unsplash({
+      access_key: process.env.UNSPLASH_CLIENT_ID,
+    });
+
+    const res = await test.search({
+      query: 'cat',
+      page: 1,
+      per_page: 1,
+      color: 'orange',
+    });
+    expect(res.status).toBe(200);
   });
 });
