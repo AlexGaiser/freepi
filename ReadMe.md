@@ -1,4 +1,4 @@
-# FreePI, Free API Library
+# FreePI, The Free API Library
 
 ### Description
 
