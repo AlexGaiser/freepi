@@ -1,8 +1,8 @@
-## Unsplash Package Freepi
+## Unsplash API Wrapper
 
-## Description
+### Description
 
-## Installation
+### Installation
 
-## Usage
+### How To Use
 
