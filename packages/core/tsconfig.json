@@ -6,8 +6,9 @@
     "removeComments": true,
     "preserveConstEnums": true,
     "sourceMap": true,
-    "declaration": true
+    "declaration": true,
+    "moduleResolution": "node"
   },
-  "include": ["*.ts"],
+  "include": ["lib/**/*"],
   "exclude": ["*.test.ts"]
 }

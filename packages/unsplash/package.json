@@ -1,30 +1,34 @@
 {
-  "name": "freepi",
+  "name": "@freepi/unsplash",
   "version": "2.2.1",
-  "description": "Wrapper for various free apis",
+  "description": "Unsplash Library for FreePI package",
   "main": "dist/cjs.js",
   "browser": "dist/index.js",
   "module": "index.js",
-  "types": "dist/index.d.ts",
+  "types": "dist/unsplash/lib/index.d.ts",
   "scripts": {
     "test": "jest --coverage",
     "build": "rollup -c",
-    "format": "prettier . --write",
-    "ci:lint": "eslint . -c .eslintrc.json"
+    "publish-npm": "npm run test && rollup -c && npm publish --access public"
   },
-  "author": "Alex Gaiser and Ian Scott",
-  "license": "ISC",
+  "author": "Alex Gaiser",
+  "license": "MIT",
+  "files": [
+    "/lib",
+    "/dist"
+  ],
   "dependencies": {
     "@freepi/core": "^2.2.1",
-    "@freepi/jsonplaceholder": "^2.2.1",
-    "@freepi/unsplash": "^2.2.1",
     "@types/axios": "^0.14.0",
-    "axios": "^0.21.1"
+    "axios": "^0.21.0"
+  },
+  "devDependencies": {
+    "dotenv": "^8.2.0"
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/AlexGaiser/freepi",
-    "directory": "packages/freepi"
+    "directory": "packages/unsplash"
   },
   "gitHead": "5332630d42c0b636426e4d8720ab168cad66f030"
 }

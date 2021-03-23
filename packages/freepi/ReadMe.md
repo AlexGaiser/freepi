@@ -66,7 +66,3 @@ browser
 
 Uses Eslint and Prettier. Contributors should use Prettier to format their code before submitting. Linting and formatting rules can be found in the respective .eslintrc.json and .prettierrc files.
 
-
-
-
-
