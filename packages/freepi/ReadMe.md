@@ -44,8 +44,11 @@ const todos = await jsonWrap.todos.find({ userId: 1 })
 
 ### APIs Supported:
 
-**JSONPlaceholder**
-**Unsplash**
+**JSONPlaceholder**  
+Documentation [here](https://github.com/AlexGaiser/freepi/blob/master/packages/JSONPlaceholder/ReadMe.md)
+
+**Unsplash**  
+Documentation [here](https://github.com/AlexGaiser/freepi/blob/master/packages/unsplash/ReadMe.md)
 
 ### APIs To Be Supported:
 
@@ -65,4 +68,8 @@ browser
 ### Linting and Formatting Rules
 
 Uses Eslint and Prettier. Contributors should use Prettier to format their code before submitting. Linting and formatting rules can be found in the respective .eslintrc.json and .prettierrc files.
+
+
+
+
 

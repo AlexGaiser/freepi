@@ -44,8 +44,11 @@ const todos = await jsonWrap.todos.find({ userId: 1 })
 
 ### APIs Supported:
 
-**JSONPlaceholder**
-**Unsplash**
+**JSONPlaceholder**  
+Documentation [here](https://github.com/AlexGaiser/freepi/blob/master/packages/JSONPlaceholder/ReadMe.md)
+
+**Unsplash**  
+Documentation [here](https://github.com/AlexGaiser/freepi/blob/master/packages/unsplash/ReadMe.md)
 
 ### APIs To Be Supported:
 
