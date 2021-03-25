@@ -2,6 +2,9 @@
 
 ### Description
 
+Wrapper for the public Unsplash API. Designed for ease of use and rapid development. The purpose of this wrapper is to provide a simple and straightforward interface for users who are developing and testing applications and need easy access to high quality photos. This is a full featured wrapper, but focuses on providing a streamlined experience to aid in its primary purpose: providing a tool testing and developing applications.
+
+
 ### Installation
 
 To install FreePI
