@@ -105,11 +105,36 @@ unsplash.photos.getRandom({
       orientation: 'landscape',
       count: 10,
     });
-
+// Can also invoke without parameters to get a single random photo
+unsplash.photos.getRandom();
 // Retrieve a single photo by id
 unsplash.photos.getById('photo id')
-//Retrieve a photos statistics
+// Retrieve a photos statistics
 unsplash.photos.getPhotoStatistics('photo id')
+// Track a photo when initiating a download as per API guidelines
+unsplash.photos.trackDownload('photo id')
+// Update a photo on behalf of the logged-in user. See documentation for available parameters
+unsplash.photos.updatePhoto('photo id', {description: 'updated description'})
+// Like a photo on behalf of the logged-in user
+unsplash.photos.likePhoto('photo id')
+// Remove a user’s like of a photo
+unsplash.photos.unLikePhoto('photo id')
+// Search for photos. Alias of 'search' using photos namespace
+unsplash.photos.search({query: 'dog',
+      page: 10,
+      per_page: 1,
+      color: 'red',
+    }})
+// Get a single page from the list of all photos.
+unsplash.photos.getAll({
+      page: 1,
+      per_page: 2,
+      order_by: 'popular',
+    });
 
 
 ```
+
+## Bug Reports and Feedback
+
+Any bug reports or feedback for this library should be directed to the github [issues page](https://github.com/AlexGaiser/freepi/issues) 
