@@ -1,6 +1,6 @@
 {
   "name": "@freepi/dinoipsum",
-  "version": "2.1.0",
+  "version": "0.0.0",
   "description": "Dino Ipsum Library for freepi node package",
   "main": "dist/cjs.js",
   "browser": "dist/index.js",

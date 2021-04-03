@@ -3,7 +3,6 @@ import { AxiosPromise, AxiosRequestConfig } from 'axios';
 import { requests } from '@freepi/core';
 const { get } = requests;
 
-
 type IParam<Type> = {
   [Property in keyof Type]?: Type[Property];
 };
