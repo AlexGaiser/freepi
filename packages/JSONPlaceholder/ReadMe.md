@@ -33,7 +33,21 @@ $ OR
 $ import JSONPlaceholder from "@freepi/jsonplaceholder"
 ```
 
+### Available Namespaces
+
+JSONPlaceholder has a number of namespaces for each portion of the API. Each one has methods available to it for interacting with that portion of the UI.
+
+- todos
+- posts
+- comments
+- users
+- albums
+- photos
+
 ### Available Methods
+
+Each namespace should have the following methods available to it:
+
 
 
 ## Bug Reports and Feedback
