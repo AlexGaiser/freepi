@@ -14,7 +14,7 @@ In your terminal run
 ```bash
 $ npm install freepi
 
-$ OR
+# OR
 
 $ npm install @freepi/jsonplaceholder
 
