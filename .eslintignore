@@ -1,3 +1,4 @@
 dist/
 .gitignore
 jest.config.js
+scripts/
