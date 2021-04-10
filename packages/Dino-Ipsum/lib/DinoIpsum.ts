@@ -1,25 +1,28 @@
-import { AxiosPromise, AxiosResponse } from "axios";
-import { find } from "./services/base.req";
+import { AxiosPromise, AxiosResponse } from 'axios';
+import { find } from './services/base.req';
 
 export class DinoIpsum {
-  private baseURL = "http://dinoipsum.herokuapp.com/api/"
+  private baseURL = 'http://dinoipsum.herokuapp.com/api/';
 
-  public async getDinoIpsum (format = "json", paragraphs = 10, words = 30): Promise<any> {
+  public async getDinoIpsum(
+    format = 'json',
+    paragraphs = 10,
+    words = 30,
+  ): Promise<any> {
     format = format.toLowerCase();
-    if (format != 'json' && format != 'html' && format != 'text')
-    {
+    if (format != 'json' && format != 'html' && format != 'text') {
       format = 'json';
     }
-    
+
     const url: string = this.getBaseURL();
     const params: any = {
       format,
       paragraphs,
-      words
-    }
+      words,
+    };
 
     const result = await find('')(url)(params);
-    return result
+    return result;
   }
 
   public getBaseURL(): string {
