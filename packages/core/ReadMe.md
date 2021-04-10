@@ -6,6 +6,7 @@ The core library for FreePI. Contains logic that needs to be shared between pack
 
 ### Installation
 
+### How To Use
 To install FreePI
 
 ```bash

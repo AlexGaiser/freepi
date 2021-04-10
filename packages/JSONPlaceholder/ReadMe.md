@@ -5,6 +5,8 @@
 This is a wrapper for the free JSON Placeholder API. The JSON Placeholder API exists to provide rapid access to dummy JSON data.
 Documentation for the API itself can be found [here](https://jsonplaceholder.typicode.com/).
 
+### How To Use
+
 The JSONPlaceholder wrapper abstracts the specific paths for the JSON Placeholder API into easy to use, namespaced methods. It uses Typescript, so parameters and return values are all defined by defualt.
 
 ## Installation

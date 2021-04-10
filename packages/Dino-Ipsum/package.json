@@ -1,0 +1,25 @@
+{
+  "name": "@freepi/dinoipsum",
+  "version": "0.0.0",
+  "description": "Dino Ipsum Library for freepi node package",
+  "main": "dist/cjs.js",
+  "browser": "dist/index.js",
+  "module": "index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "test": "jest --coverage",
+    "build": "rollup -c",
+    "publish-npm": "npm run test && rollup -c && npm publish --access public"
+  },
+  "author": "Ian Scott",
+  "license": "MIT",
+  "files": [
+    "/lib",
+    "/dist"
+  ],
+  "dependencies": {
+    "@freepi/core": "^2.1.0",
+    "@types/axios": "^0.14.0",
+    "axios": "^0.21.0"
+  }
+}

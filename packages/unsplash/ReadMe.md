@@ -43,6 +43,7 @@ To search unsplash for photos, collections, or users, use the **search** method.
 
 The search method takes two arguments: "query" and "namespace" (namespace is 'photos' by default).
 
+
 **Query**: the search query you wish to make to UnSplash. The specific parameters available to the query object depends on the search.
 
 See details for available query parameters here:
