@@ -52,6 +52,11 @@ Documentation [here](https://github.com/AlexGaiser/freepi/blob/master/packages/J
 
 Documentation [here](https://github.com/AlexGaiser/freepi/blob/master/packages/unsplash/ReadMe.md)
 
+
+### Dino Ipsum
+Documentation [here](https://github.com/AlexGaiser/freepi/blob/master/packages/DinoIpsum/ReadMe.md)
+
+
 ### core
 
 Documentation [here](https://github.com/AlexGaiser/freepi/blob/master/packages/core/ReadMe.md)
