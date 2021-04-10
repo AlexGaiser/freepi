@@ -1,4 +1,4 @@
-import DinoIpsum from './Dino-Ipsum';
+import DinoIpsum from './DinoIpsum';
 
 export { DinoIpsum };
 
