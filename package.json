@@ -7,6 +7,7 @@
   "module": "index.js",
   "scripts": {
     "test": "jest --coverage",
+    "sync:readMe": "cd ./scripts/ && node syncReadMe.js",
     "bootstrap": "lerna exec npm install",
     "link": "lerna link",
     "format": "prettier . --write",
@@ -20,6 +21,7 @@
     "@babel/core": "^7.12.16",
     "@babel/preset-env": "^7.12.16",
     "@types/jest": "^26.0.20",
+    "@types/node": "^14.14.35",
     "@typescript-eslint/eslint-plugin": "^4.15.0",
     "@typescript-eslint/parser": "^4.15.0",
     "eslint": "^7.19.0",
