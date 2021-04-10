@@ -4,7 +4,6 @@
 
 Wrapper for the public Unsplash API. Designed for ease of use and rapid development. The purpose of this wrapper is to provide a simple and straightforward interface for users who are developing and testing applications and need easy access to high quality photos. This is a full featured wrapper, but focuses on providing a streamlined experience to aid in its primary purpose: providing a tool testing and developing applications.
 
-
 ## Installation
 
 To install FreePI
@@ -12,7 +11,6 @@ To install FreePI
 ```bash
 $ npm install freepi
 ```
-
 
 To install package individually, run the following in your terminal.
 
@@ -34,22 +32,21 @@ import Unsplash from "@freepi/unsplash";
 Then create a local instance of the Unsplash wrapper using your unsplash client id.
 
 ```javascript
-
 const unsplash = new Unsplash({
   access_key, // your unsplash client id
 });
-
 ```
 
 ### Searching Unsplash
 
 To search unsplash for photos, collections, or users, use the **search** method.
 
-The search method takes two arguments: "query" and "namespace" (namespace is 'photos' by default). 
+The search method takes two arguments: "query" and "namespace" (namespace is 'photos' by default).
 
-**Query**: the search query you wish to make to UnSplash. The specific parameters available to the query object depends on the search. 
+**Query**: the search query you wish to make to UnSplash. The specific parameters available to the query object depends on the search.
 
-See details for available query parameters here:  
+See details for available query parameters here:
+
 - [photos](https://unsplash.com/documentation#search-photos)
 - [collections](https://unsplash.com/documentation#search-collections)
 - [users](https://unsplash.com/documentation#search-users)
@@ -57,7 +54,7 @@ See details for available query parameters here:
 **Namespace**: Takes the values 'users', 'photos', or 'collections'.
 This value determines what will be searched. Each namespace has its different parameters available so see the documentation for specific parameters and their values.
 
-**Example:**  
+**Example:**
 
 ```javascript
 const unsplash = new Unsplash({
@@ -65,23 +62,19 @@ const unsplash = new Unsplash({
 });
 
 unsplash.search({
-      query: 'cat',
-      page: 1,
-      per_page: 1,
-      color: 'orange',
-    });
+  query: 'cat',
+  page: 1,
+  per_page: 1,
+  color: 'orange',
+});
 // search defaults to the photos namespace
-
-
 ```
-
-
 
 ### Photos Methods
 
-The 'photos' object provides a variety of methods for getting photos from unsplash. To use these methods call 'photos' on the unsplash instance. 
+The 'photos' object provides a variety of methods for getting photos from unsplash. To use these methods call 'photos' on the unsplash instance.
 
-**Available Methods are:**  
+**Available Methods are:**
 
 - getRandom
 - getById
@@ -93,7 +86,7 @@ The 'photos' object provides a variety of methods for getting photos from unspla
 - getAll
 - search
 
-**Examples:**  
+**Examples:**
 
 ```javascript
 const unsplash = new Unsplash({
@@ -137,4 +130,4 @@ unsplash.photos.getAll({
 
 ## Bug Reports and Feedback
 
-Any bug reports or feedback for this library should be directed to the github [issues page](https://github.com/AlexGaiser/freepi/issues) 
+Any bug reports or feedback for this library should be directed to the github [issues page](https://github.com/AlexGaiser/freepi/issues)
