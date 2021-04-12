@@ -1,6 +1,6 @@
 {
   "name": "@freepi/unsplash",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "description": "Unsplash Library for FreePI package",
   "main": "dist/cjs.js",
   "browser": "dist/index.js",
