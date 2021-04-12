@@ -16,6 +16,7 @@
   "license": "ISC",
   "dependencies": {
     "@freepi/core": "^2.2.3-alpha.0",
+    "@freepi/dinoipsum": "^2.2.3-alpha.0",
     "@freepi/jsonplaceholder": "^2.2.3-alpha.0",
     "@freepi/unsplash": "^2.2.3-alpha.0",
     "@types/axios": "^0.14.0",
