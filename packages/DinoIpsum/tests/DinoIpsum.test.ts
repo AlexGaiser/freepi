@@ -32,17 +32,6 @@ describe('DinoIpsum', () => {
     expect(resultArray.length).toBeGreaterThan(expectedWordCount);
   });
 
-  test('should return with JSON data if a string not of json, text, or html is submitted', async () => {
-    const result = await dinoIpsum.getDinoIpsum('testtestest');
-
-    const expectedParagraphCount = 10;
-    const expectedWordCount = 30;
-
-    expect(result.status).toBe(200);
-    expect(result.data.length).toEqual(expectedParagraphCount);
-    expect(result.data[0].length).toEqual(expectedWordCount);
-  });
-
   test('should return with JSON Dino Ipsum in a custom paragraph and word count', async () => {
     const result = await dinoIpsum.getDinoIpsum('JSON', 4, 250);
 
