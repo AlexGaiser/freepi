@@ -33,7 +33,7 @@ describe('DinoIpsum', () => {
   });
 
   test('should return with JSON Dino Ipsum in a custom paragraph and word count', async () => {
-    const result = await dinoIpsum.getDinoIpsum('JSON', 4, 250);
+    const result = await dinoIpsum.getDinoIpsum('json', 4, 250);
 
     const expectedParagraphCount = 4;
     const expectedWordCount = 250;
