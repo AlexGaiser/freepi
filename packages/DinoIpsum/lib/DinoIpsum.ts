@@ -1,4 +1,3 @@
-import { AxiosPromise, AxiosResponse } from 'axios';
 import { find } from './services/base.req';
 
 type FormatString = 'text' | 'json' | 'html';
