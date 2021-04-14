@@ -1,21 +1,22 @@
-import { AxiosPromise, AxiosResponse } from 'axios';
 import { find } from './services/base.req';
+
+type FormatString = 'text' | 'json' | 'html';
+interface QueryParams {
+  format: FormatString;
+  paragraphs: number;
+  words: number;
+}
 
 export class DinoIpsum {
   private baseURL = 'http://dinoipsum.herokuapp.com/api/';
 
   public async getDinoIpsum(
-    format = 'json',
+    format: FormatString = 'json',
     paragraphs = 10,
     words = 30,
   ): Promise<any> {
-    format = format.toLowerCase();
-    if (format != 'json' && format != 'html' && format != 'text') {
-      format = 'json';
-    }
-
     const url: string = this.getBaseURL();
-    const params: any = {
+    const params: QueryParams = {
       format,
       paragraphs,
       words,
