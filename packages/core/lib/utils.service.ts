@@ -1,10 +1,6 @@
 export const pipe = (...args) => (x) =>
   args.reduce((v, f) => f(v), x);
 
-const utils = {
-  pipe,
-};
-
 export const clone = (target: any, map: any = new WeakMap()): any => {
   if (typeof target === 'object') {
     const cloneTarget = Array.isArray(target) ? [] : {};
@@ -19,6 +15,11 @@ export const clone = (target: any, map: any = new WeakMap()): any => {
   } else {
     return target;
   }
+};
+
+const utils = {
+  pipe,
+  clone,
 };
 
 export default utils;
